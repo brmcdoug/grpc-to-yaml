@@ -1,0 +1,101 @@
+data:
+  Cisco-IOS-XR-policy-repository-cfg:routing-policy:
+    route-policies:
+      route-policy:
+      - route-policy-name: SID
+        rpl-route-policy: "route-policy SID($SID)\n  set label-index $SID\nend-policy\n"
+      - route-policy-name: drop
+        rpl-route-policy: "route-policy drop\n  drop\nend-policy\n"
+      - route-policy-name: pass
+        rpl-route-policy: "route-policy pass\n  pass\nend-policy\n"
+      - route-policy-name: isp-out
+        rpl-route-policy: "route-policy isp-out\n  apply maint-pass-or-drop\n  apply
+          advertise-pass-or-drop\n  if destination in announce-na then\n    set med
+          0\n  elseif destination in announce-global then\n    set med 0\n  elseif
+          destination in announce-isp-rtbh then\n    set community (65535:666)\n    done\n
+          \ else\n    drop\n  endif\nend-policy\n"
+      - route-policy-name: LP_IN_V4
+        rpl-route-policy: "route-policy LP_IN_V4\n  if destination in (0.0.0.0/0 le
+          32) then\n    set local-preference 140\n  else\n    pass\n  endif\nend-policy\n"
+      - route-policy-name: LP_IN_V6
+        rpl-route-policy: "route-policy LP_IN_V6\n  if destination in (::/0 le 128)
+          then\n    set local-preference 140\n  else\n    pass\n  endif\nend-policy\n"
+      - route-policy-name: DC1_routes
+        rpl-route-policy: "route-policy DC1_routes\n  if destination in DC1 then\n
+          \   pass\n  endif\nend-policy\n"
+      - route-policy-name: dc-aggregate
+        rpl-route-policy: "route-policy dc-aggregate\n  if destination in DC1 then\n
+          \   pass\n  else\n    drop\n  endif\nend-policy\n"
+      - route-policy-name: maint-pass-or-drop
+        rpl-route-policy: "route-policy maint-pass-or-drop\n  if protocol is isis
+          100 then\n    pass\n  else\n    drop\n  endif\nend-policy\n"
+      - route-policy-name: SET_COLOR_ALL_VPNV4
+        rpl-route-policy: "route-policy SET_COLOR_ALL_VPNV4\n  if extcommunity rt
+          matches-any red-rt-set_v4 then\n    set extcommunity color COLOR_10\n  elseif
+          extcommunity rt matches-any main-rt-set_v4 then\n    set extcommunity color
+          COLOR_20\n  elseif extcommunity rt matches-any green-rt-set_v4 then\n    set
+          extcommunity color COLOR_30\n  elseif extcommunity rt matches-any blue-rt-set_v4
+          then\n    set extcommunity color COLOR_40\n  else\n    pass\n  endif\nend-policy\n"
+      - route-policy-name: SET_COLOR_ALL_VPNV6
+        rpl-route-policy: "route-policy SET_COLOR_ALL_VPNV6\n  if extcommunity rt
+          matches-any red-rt-set_v6 then\n    set extcommunity color COLOR_100\n  elseif
+          extcommunity rt matches-any main-rt-set_v6 then\n    set extcommunity color
+          COLOR_200\n  elseif extcommunity rt matches-any green-rt-set_v6 then\n    set
+          extcommunity color COLOR_300\n  elseif extcommunity rt matches-any blue-rt-set_v6
+          then\n    set extcommunity color COLOR_400\n  else\n    pass\n  endif\nend-policy\n"
+      - route-policy-name: advertise-pass-or-drop
+        rpl-route-policy: "route-policy advertise-pass-or-drop\n  if destination in
+          (10.1.0.0/16) then\n    pass\n  else\n    drop\n  endif\nend-policy\n"
+    sets:
+      extended-community-opaque-sets:
+        extended-community-opaque-set:
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_10\n  10\nend-set\n"
+          set-name: COLOR_10
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_20\n  20\nend-set\n"
+          set-name: COLOR_20
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_30\n  30\nend-set\n"
+          set-name: COLOR_30
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_40\n  40\nend-set\n"
+          set-name: COLOR_40
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_100\n
+            \ 100\nend-set\n"
+          set-name: COLOR_100
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_200\n
+            \ 200\nend-set\n"
+          set-name: COLOR_200
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_300\n
+            \ 300\nend-set\n"
+          set-name: COLOR_300
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_400\n
+            \ 400\nend-set\n"
+          set-name: COLOR_400
+      extended-community-rt-sets:
+        extended-community-rt-set:
+        - rpl-extended-community-rt-set: "extcommunity-set rt red-rt-set_v4\n  9:9\nend-set\n"
+          set-name: red-rt-set_v4
+        - rpl-extended-community-rt-set: "extcommunity-set rt red-rt-set_v6\n  9:9\nend-set\n"
+          set-name: red-rt-set_v6
+        - rpl-extended-community-rt-set: "extcommunity-set rt blue-rt-set_v4\n  12:12\nend-set\n"
+          set-name: blue-rt-set_v4
+        - rpl-extended-community-rt-set: "extcommunity-set rt blue-rt-set_v6\n  12:12\nend-set\n"
+          set-name: blue-rt-set_v6
+        - rpl-extended-community-rt-set: "extcommunity-set rt main-rt-set_v4\n  10:10\nend-set\n"
+          set-name: main-rt-set_v4
+        - rpl-extended-community-rt-set: "extcommunity-set rt main-rt-set_v6\n  10:10\nend-set\n"
+          set-name: main-rt-set_v6
+        - rpl-extended-community-rt-set: "extcommunity-set rt green-rt-set_v4\n  11:11\nend-set\n"
+          set-name: green-rt-set_v4
+        - rpl-extended-community-rt-set: "extcommunity-set rt green-rt-set_v6\n  11:11\nend-set\n"
+          set-name: green-rt-set_v6
+      prefix-sets:
+        prefix-set:
+        - rpl-prefix-set: "prefix-set DC1\n  fc00:0:40::/44 le 128,\n  fc00:1:40::/44
+            le 128\nend-set\n"
+          set-name: DC1
+        - rpl-prefix-set: "prefix-set announce-na\n  1.2.3.0/24\nend-set\n"
+          set-name: announce-na
+        - rpl-prefix-set: "prefix-set announce-global\n  0.0.0.0/0\nend-set\n"
+          set-name: announce-global
+        - rpl-prefix-set: "prefix-set announce-isp-rtbh\n  9.8.7.0/24\nend-set\n"
+          set-name: announce-isp-rtbh
+

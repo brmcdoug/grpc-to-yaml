@@ -1,7 +1,5 @@
-
-Not compression
-EOF
 {
+ "data": {   
  "Cisco-IOS-XR-policy-repository-cfg:routing-policy": {
   "sets": {
    "extended-community-rt-sets": {
@@ -150,5 +148,6 @@ EOF
    ]
   }
  }
+}
 }
 

@@ -1,0 +1,304 @@
+{
+  "data": {  
+    "openconfig-routing-policy:routing-policy": {
+     "defined-sets": {
+      "openconfig-bgp-policy:bgp-defined-sets": {
+       "ext-community-sets": {
+        "ext-community-set": [
+         {
+          "config": {
+           "ext-community-set-name": "red-rt-set_v4",
+           "ext-community-member": [
+            "9:9"
+           ]
+          },
+          "ext-community-set-name": "red-rt-set_v4"
+         },
+         {
+          "config": {
+           "ext-community-set-name": "red-rt-set_v6",
+           "ext-community-member": [
+            "9:9"
+           ]
+          },
+          "ext-community-set-name": "red-rt-set_v6"
+         },
+         {
+          "config": {
+           "ext-community-set-name": "blue-rt-set_v4",
+           "ext-community-member": [
+            "12:12"
+           ]
+          },
+          "ext-community-set-name": "blue-rt-set_v4"
+         },
+         {
+          "config": {
+           "ext-community-set-name": "blue-rt-set_v6",
+           "ext-community-member": [
+            "12:12"
+           ]
+          },
+          "ext-community-set-name": "blue-rt-set_v6"
+         },
+         {
+          "config": {
+           "ext-community-set-name": "main-rt-set_v4",
+           "ext-community-member": [
+            "10:10"
+           ]
+          },
+          "ext-community-set-name": "main-rt-set_v4"
+         },
+         {
+          "config": {
+           "ext-community-set-name": "main-rt-set_v6",
+           "ext-community-member": [
+            "10:10"
+           ]
+          },
+          "ext-community-set-name": "main-rt-set_v6"
+         },
+         {
+          "config": {
+           "ext-community-set-name": "green-rt-set_v4",
+           "ext-community-member": [
+            "11:11"
+           ]
+          },
+          "ext-community-set-name": "green-rt-set_v4"
+         },
+         {
+          "config": {
+           "ext-community-set-name": "green-rt-set_v6",
+           "ext-community-member": [
+            "11:11"
+           ]
+          },
+          "ext-community-set-name": "green-rt-set_v6"
+         }
+        ]
+       }
+      },
+      "prefix-sets": {
+       "prefix-set": [
+        {
+         "config": {
+          "name": "DC1",
+          "mode": "IPV6"
+         },
+         "name": "DC1",
+         "prefixes": {
+          "prefix": [
+           {
+            "ip-prefix": "fc00:0:40::/44",
+            "config": {
+             "ip-prefix": "fc00:0:40::/44",
+             "masklength-range": "44..128"
+            },
+            "masklength-range": "44..128"
+           },
+           {
+            "ip-prefix": "fc00:1:40::/44",
+            "config": {
+             "ip-prefix": "fc00:1:40::/44",
+             "masklength-range": "44..128"
+            },
+            "masklength-range": "44..128"
+           }
+          ]
+         }
+        },
+        {
+         "config": {
+          "name": "announce-na",
+          "mode": "IPV4"
+         },
+         "name": "announce-na",
+         "prefixes": {
+          "prefix": [
+           {
+            "ip-prefix": "1.2.3.0/24",
+            "config": {
+             "ip-prefix": "1.2.3.0/24",
+             "masklength-range": "exact"
+            },
+            "masklength-range": "exact"
+           }
+          ]
+         }
+        },
+        {
+         "config": {
+          "name": "announce-global",
+          "mode": "IPV4"
+         },
+         "name": "announce-global",
+         "prefixes": {
+          "prefix": [
+           {
+            "ip-prefix": "0.0.0.0/0",
+            "config": {
+             "ip-prefix": "0.0.0.0/0",
+             "masklength-range": "exact"
+            },
+            "masklength-range": "exact"
+           }
+          ]
+         }
+        },
+        {
+         "config": {
+          "name": "announce-isp-rtbh",
+          "mode": "IPV4"
+         },
+         "name": "announce-isp-rtbh",
+         "prefixes": {
+          "prefix": [
+           {
+            "ip-prefix": "9.8.7.0/24",
+            "config": {
+             "ip-prefix": "9.8.7.0/24",
+             "masklength-range": "exact"
+            },
+            "masklength-range": "exact"
+           }
+          ]
+         }
+        }
+       ]
+      }
+     },
+     "policy-definitions": {
+      "policy-definition": [
+       {
+        "config": {
+         "name": "SID"
+        },
+        "name": "SID"
+       },
+       {
+        "config": {
+         "name": "drop"
+        },
+        "name": "drop",
+        "statements": {
+         "statement": [
+          {
+           "name": "id-1",
+           "config": {
+            "name": "id-1"
+           },
+           "actions": {
+            "config": {
+             "policy-result": "REJECT_ROUTE"
+            }
+           }
+          }
+         ]
+        }
+       },
+       {
+        "config": {
+         "name": "pass"
+        },
+        "name": "pass",
+        "statements": {
+         "statement": [
+          {
+           "name": "id-1",
+           "config": {
+            "name": "id-1"
+           },
+           "actions": {
+            "config": {
+             "policy-result": "ACCEPT_ROUTE"
+            }
+           }
+          }
+         ]
+        }
+       },
+       {
+        "config": {
+         "name": "isp-out"
+        },
+        "name": "isp-out"
+       },
+       {
+        "config": {
+         "name": "LP_IN_V4"
+        },
+        "name": "LP_IN_V4"
+       },
+       {
+        "config": {
+         "name": "LP_IN_V6"
+        },
+        "name": "LP_IN_V6"
+       },
+       {
+        "config": {
+         "name": "DC1_routes"
+        },
+        "name": "DC1_routes",
+        "statements": {
+         "statement": [
+          {
+           "name": "id-1",
+           "config": {
+            "name": "id-1"
+           },
+           "conditions": {
+            "match-prefix-set": {
+             "config": {
+              "prefix-set": "DC1",
+              "match-set-options": "ANY"
+             }
+            }
+           },
+           "actions": {
+            "config": {
+             "policy-result": "ACCEPT_ROUTE"
+            }
+           }
+          }
+         ]
+        }
+       },
+       {
+        "config": {
+         "name": "dc-aggregate"
+        },
+        "name": "dc-aggregate"
+       },
+       {
+        "config": {
+         "name": "maint-pass-or-drop"
+        },
+        "name": "maint-pass-or-drop"
+       },
+       {
+        "config": {
+         "name": "SET_COLOR_ALL_VPNV4"
+        },
+        "name": "SET_COLOR_ALL_VPNV4"
+       },
+       {
+        "config": {
+         "name": "SET_COLOR_ALL_VPNV6"
+        },
+        "name": "SET_COLOR_ALL_VPNV6"
+       },
+       {
+        "config": {
+         "name": "advertise-pass-or-drop"
+        },
+        "name": "advertise-pass-or-drop"
+       }
+      ]
+     }
+    }
+   }
+}  
+   
