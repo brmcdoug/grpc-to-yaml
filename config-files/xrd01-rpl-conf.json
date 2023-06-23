@@ -1,4 +1,6 @@
 
+Not compression
+EOF
 {
  "Cisco-IOS-XR-policy-repository-cfg:routing-policy": {
   "sets": {
@@ -79,6 +81,18 @@
      {
       "set-name": "DC1",
       "rpl-prefix-set": "prefix-set DC1\n  fc00:0:40::/44 le 128,\n  fc00:1:40::/44 le 128\nend-set\n"
+     },
+     {
+      "set-name": "announce-na",
+      "rpl-prefix-set": "prefix-set announce-na\n  1.2.3.0/24\nend-set\n"
+     },
+     {
+      "set-name": "announce-global",
+      "rpl-prefix-set": "prefix-set announce-global\n  0.0.0.0/0\nend-set\n"
+     },
+     {
+      "set-name": "announce-isp-rtbh",
+      "rpl-prefix-set": "prefix-set announce-isp-rtbh\n  9.8.7.0/24\nend-set\n"
      }
     ]
    }
@@ -98,6 +112,10 @@
      "rpl-route-policy": "route-policy pass\n  pass\nend-policy\n"
     },
     {
+     "route-policy-name": "isp-out",
+     "rpl-route-policy": "route-policy isp-out\n  apply maint-pass-or-drop\n  apply advertise-pass-or-drop\n  if destination in announce-na then\n    set med 0\n  elseif destination in announce-global then\n    set med 0\n  elseif destination in announce-isp-rtbh then\n    set community (65535:666)\n    done\n  else\n    drop\n  endif\nend-policy\n"
+    },
+    {
      "route-policy-name": "LP_IN_V4",
      "rpl-route-policy": "route-policy LP_IN_V4\n  if destination in (0.0.0.0/0 le 32) then\n    set local-preference 140\n  else\n    pass\n  endif\nend-policy\n"
     },
@@ -114,12 +132,20 @@
      "rpl-route-policy": "route-policy dc-aggregate\n  if destination in DC1 then\n    pass\n  else\n    drop\n  endif\nend-policy\n"
     },
     {
+     "route-policy-name": "maint-pass-or-drop",
+     "rpl-route-policy": "route-policy maint-pass-or-drop\n  if protocol is isis 100 then\n    pass\n  else\n    drop\n  endif\nend-policy\n"
+    },
+    {
      "route-policy-name": "SET_COLOR_ALL_VPNV4",
      "rpl-route-policy": "route-policy SET_COLOR_ALL_VPNV4\n  if extcommunity rt matches-any red-rt-set_v4 then\n    set extcommunity color COLOR_10\n  elseif extcommunity rt matches-any main-rt-set_v4 then\n    set extcommunity color COLOR_20\n  elseif extcommunity rt matches-any green-rt-set_v4 then\n    set extcommunity color COLOR_30\n  elseif extcommunity rt matches-any blue-rt-set_v4 then\n    set extcommunity color COLOR_40\n  else\n    pass\n  endif\nend-policy\n"
     },
     {
      "route-policy-name": "SET_COLOR_ALL_VPNV6",
      "rpl-route-policy": "route-policy SET_COLOR_ALL_VPNV6\n  if extcommunity rt matches-any red-rt-set_v6 then\n    set extcommunity color COLOR_100\n  elseif extcommunity rt matches-any main-rt-set_v6 then\n    set extcommunity color COLOR_200\n  elseif extcommunity rt matches-any green-rt-set_v6 then\n    set extcommunity color COLOR_300\n  elseif extcommunity rt matches-any blue-rt-set_v6 then\n    set extcommunity color COLOR_400\n  else\n    pass\n  endif\nend-policy\n"
+    },
+    {
+     "route-policy-name": "advertise-pass-or-drop",
+     "rpl-route-policy": "route-policy advertise-pass-or-drop\n  if destination in (10.1.0.0/16) then\n    pass\n  else\n    drop\n  endif\nend-policy\n"
     }
    ]
   }
