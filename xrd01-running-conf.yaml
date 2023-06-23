@@ -1,0 +1,3692 @@
+data:
+  Cisco-IOS-XR-aaa-lib-cfg:aaa:
+    Cisco-IOS-XR-aaa-locald-cfg:usernames:
+      username:
+      - name: cisco
+        ordering-index: 0
+        secret:
+          secret10: $6$GXFSDMYr1txD....$09ETAo1VMaFVXEu9HMDuV9y8fpXbZIHhgWe8nqvxotAaOOaTCxsC8QBzp3g1aVHFZUOtPuLFeLOaL.XsIpQHw.
+          type: type10
+        usergroup-under-usernames:
+          usergroup-under-username:
+          - name: root-lr
+          - name: cisco-support
+  Cisco-IOS-XR-call-home-cfg:call-home:
+    active:
+    - null
+    contact-smart-licensing: true
+    profiles:
+      profile:
+      - active:
+        - null
+        methods:
+          method:
+          - enable: false
+            method: email
+          - enable: true
+            method: http
+        profile-name: CiscoTAC-1
+  Cisco-IOS-XR-cdp-cfg:cdp:
+    enable: true
+  Cisco-IOS-XR-clns-isis-cfg:isis:
+    instances:
+      instance:
+      - affinity-mappings:
+          affinity-mapping:
+          - affinity-name: red
+            value: 1
+          - affinity-name: blue
+            value: 3
+          - affinity-name: green
+            value: 2
+        afs:
+          af:
+          - af-data:
+              advertise-link-attributes: true
+              maximum-paths: 32
+              metric-styles:
+                metric-style:
+                - level: not-set
+                  style: new-metric-style
+              micro-loop-avoidance:
+                enable: micro-loop-avoidance-segement-routing
+              mpls:
+                level:
+                  level2: true
+                router-id:
+                  interface-name: Loopback0
+              segment-routing:
+                mpls: ldp
+            af-name: ipv4
+            saf-name: unicast
+          - af-data:
+              advertise-link-attributes: true
+              maximum-paths: 32
+              metric-styles:
+                metric-style:
+                - level: not-set
+                  style: new-metric-style
+              micro-loop-avoidance:
+                enable: micro-loop-avoidance-segement-routing
+              redistributions:
+                redistribution:
+                - bgp:
+                  - as-xx: 0
+                    as-yy: 65000
+                    route-policy-name: dc-aggregate
+                  protocol-name: bgp
+              segment-routing:
+                srv6:
+                  running:
+                  - null
+                  srv6-locators:
+                    srv6-locator:
+                    - locator-name: MAIN
+                      running:
+                      - null
+                    - locator-name: LATENCY_1
+                      running:
+                      - null
+                    - locator-name: LATENCY_2
+                      running:
+                      - null
+                    - locator-name: LATENCY_3
+                      running:
+                      - null
+            af-name: ipv6
+            saf-name: unicast
+        distribute:
+          level: level2
+        flex-algos:
+          flex-algo:
+          - advertise-definition: true
+            affinity-include-anies:
+              affinity-include-any:
+              - red
+            flex-algo: 128
+            metric-type: 1
+            running:
+            - null
+          - advertise-definition: true
+            affinity-include-anies:
+              affinity-include-any:
+              - green
+            flex-algo: 129
+            metric-type: 1
+            running:
+            - null
+          - advertise-definition: true
+            affinity-include-anies:
+              affinity-include-any:
+              - blue
+            flex-algo: 130
+            metric-type: 1
+            running:
+            - null
+        instance-name: '100'
+        interfaces:
+          interface:
+          - interface-afs:
+              interface-af:
+              - af-name: ipv4
+                interface-af-data:
+                  algorithm-prefix-sids:
+                    algorithm-prefix-sid:
+                    - algo: 128
+                      explicit-null: disable
+                      nflag-clear: disable
+                      php: enable
+                      type: index
+                      value: 128
+                    - algo: 129
+                      explicit-null: disable
+                      nflag-clear: disable
+                      php: enable
+                      type: index
+                      value: 129
+                    - algo: 130
+                      explicit-null: disable
+                      nflag-clear: disable
+                      php: enable
+                      type: index
+                      value: 130
+                  prefix-sid:
+                    explicit-null: disable
+                    nflag-clear: disable
+                    php: enable
+                    type: index
+                    value: 1
+                  running:
+                  - null
+                saf-name: unicast
+              - af-name: ipv6
+                interface-af-data:
+                  running:
+                  - null
+                saf-name: unicast
+            interface-name: Loopback0
+            running:
+            - null
+            state: passive
+          - circuit-type: level2
+            int-affinity-table:
+              flex-algos:
+                flex-algo:
+                - red
+                - green
+            interface-afs:
+              interface-af:
+              - af-name: ipv4
+                interface-af-data:
+                  interface-frr-table:
+                    frr-types:
+                      frr-type:
+                      - level: level2
+                        type: per-prefix
+                    frrtilfa-types:
+                      frrtilfa-type:
+                      - level: not-set
+                      - level: level2
+                    interface-frr-tiebreakers:
+                      interface-frr-tiebreaker:
+                      - index: 200
+                        level: not-set
+                        tiebreaker: node-protecting
+                      - index: 100
+                        level: not-set
+                        tiebreaker: srlg-disjoint
+                  metrics:
+                    metric:
+                    - level: not-set
+                      metric: 1
+                  running:
+                  - null
+                saf-name: unicast
+              - af-name: ipv6
+                interface-af-data:
+                  interface-frr-table:
+                    frr-types:
+                      frr-type:
+                      - level: level2
+                        type: per-prefix
+                    frrtilfa-types:
+                      frrtilfa-type:
+                      - level: not-set
+                      - level: level2
+                    interface-frr-tiebreakers:
+                      interface-frr-tiebreaker:
+                      - index: 200
+                        level: not-set
+                        tiebreaker: node-protecting
+                      - index: 100
+                        level: not-set
+                        tiebreaker: srlg-disjoint
+                  metrics:
+                    metric:
+                    - level: not-set
+                      metric: 1
+                  running:
+                  - null
+                saf-name: unicast
+            interface-name: GigabitEthernet0/0/0/0
+            point-to-point:
+            - null
+            running:
+            - null
+          - circuit-type: level2
+            int-affinity-table:
+              flex-algos:
+                flex-algo:
+                - red
+                - blue
+            interface-afs:
+              interface-af:
+              - af-name: ipv4
+                interface-af-data:
+                  interface-frr-table:
+                    frr-types:
+                      frr-type:
+                      - level: level2
+                        type: per-prefix
+                    frrtilfa-types:
+                      frrtilfa-type:
+                      - level: not-set
+                      - level: level2
+                    interface-frr-tiebreakers:
+                      interface-frr-tiebreaker:
+                      - index: 200
+                        level: not-set
+                        tiebreaker: node-protecting
+                      - index: 100
+                        level: not-set
+                        tiebreaker: srlg-disjoint
+                  metrics:
+                    metric:
+                    - level: not-set
+                      metric: 1
+                  running:
+                  - null
+                saf-name: unicast
+              - af-name: ipv6
+                interface-af-data:
+                  interface-frr-table:
+                    frr-types:
+                      frr-type:
+                      - level: level2
+                        type: per-prefix
+                    frrtilfa-types:
+                      frrtilfa-type:
+                      - level: not-set
+                      - level: level2
+                    interface-frr-tiebreakers:
+                      interface-frr-tiebreaker:
+                      - index: 200
+                        level: not-set
+                        tiebreaker: node-protecting
+                      - index: 100
+                        level: not-set
+                        tiebreaker: srlg-disjoint
+                  metrics:
+                    metric:
+                    - level: not-set
+                      metric: 1
+                  running:
+                  - null
+                saf-name: unicast
+            interface-name: GigabitEthernet0/0/0/1
+            point-to-point:
+            - null
+            running:
+            - null
+          - int-affinity-table:
+              flex-algos:
+                flex-algo:
+                - red
+                - blue
+                - green
+            interface-name: GigabitEthernet0/0/0/2
+            running:
+            - null
+        nets:
+          net:
+          - net-name: 49.0901.0000.0000.0001.00
+        nsf:
+          flavor: ietf-standard-nsf
+        running:
+        - null
+  Cisco-IOS-XR-crypto-ssh-cfg:ssh:
+    server:
+      netconf-vrf-table:
+        vrf:
+        - enable:
+          - null
+          vrf-name: default
+      rate-limit: 600
+      session-limit: 100
+      v2:
+      - null
+      vrf-table:
+        vrf:
+        - enable:
+          - null
+          vrf-name: default
+  Cisco-IOS-XR-ifmgr-cfg:interface-configurations:
+    interface-configuration:
+    - Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+        addresses:
+          primary:
+            address: 10.0.0.1
+            netmask: 255.255.255.255
+      Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+        addresses:
+          regular-addresses:
+            regular-address:
+            - address: fc00:0:1::1
+              prefix-length: 128
+              zone: '0'
+      active: act
+      interface-name: Loopback0
+      interface-virtual:
+      - null
+    - Cisco-IOS-XR-infra-rsi-cfg:vrf: red
+      Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+        addresses:
+          primary:
+            address: 10.9.1.1
+            netmask: 255.255.255.0
+      Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+        addresses:
+          regular-addresses:
+            regular-address:
+            - address: 10:9:1::1
+              prefix-length: 128
+              zone: '0'
+      active: act
+      interface-name: Loopback9
+      interface-virtual:
+      - null
+    - Cisco-IOS-XR-infra-rsi-cfg:vrf: main
+      Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+        addresses:
+          primary:
+            address: 10.10.1.1
+            netmask: 255.255.255.0
+      Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+        addresses:
+          regular-addresses:
+            regular-address:
+            - address: 10:10:1::1
+              prefix-length: 128
+              zone: '0'
+      active: act
+      interface-name: Loopback10
+      interface-virtual:
+      - null
+    - Cisco-IOS-XR-infra-rsi-cfg:vrf: green
+      Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+        addresses:
+          primary:
+            address: 10.11.1.1
+            netmask: 255.255.255.0
+      Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+        addresses:
+          regular-addresses:
+            regular-address:
+            - address: 10:11:1::1
+              prefix-length: 128
+              zone: '0'
+      active: act
+      interface-name: Loopback11
+      interface-virtual:
+      - null
+    - Cisco-IOS-XR-infra-rsi-cfg:vrf: blue
+      Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+        addresses:
+          primary:
+            address: 10.12.1.1
+            netmask: 255.255.255.0
+      Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+        addresses:
+          regular-addresses:
+            regular-address:
+            - address: 10:12:1::1
+              prefix-length: 128
+              zone: '0'
+      active: act
+      interface-name: Loopback12
+      interface-virtual:
+      - null
+    - Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+        addresses:
+          primary:
+            address: 10.251.254.101
+            netmask: 255.255.255.0
+      active: act
+      description: mgt
+      interface-name: MgmtEth0/RP0/CPU0/0
+    - Cisco-IOS-XR-cdp-cfg:cdp:
+        enable:
+        - null
+      Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+        addresses:
+          primary:
+            address: 10.1.1.8
+            netmask: 255.255.255.254
+      Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+        addresses:
+          regular-addresses:
+            regular-address:
+            - address: 2001:1:1:1::8
+              prefix-length: 127
+              zone: '0'
+      active: act
+      description: to r02
+      interface-name: GigabitEthernet0/0/0/0
+    - Cisco-IOS-XR-cdp-cfg:cdp:
+        enable:
+        - null
+      Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+        addresses:
+          primary:
+            address: 10.1.1.10
+            netmask: 255.255.255.254
+      Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+        addresses:
+          regular-addresses:
+            regular-address:
+            - address: 2001:1:1:1::10
+              prefix-length: 127
+              zone: '0'
+      active: act
+      description: to r03
+      interface-name: GigabitEthernet0/0/0/1
+    - Cisco-IOS-XR-cdp-cfg:cdp:
+        enable:
+        - null
+      Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+        addresses:
+          primary:
+            address: 10.1.41.10
+            netmask: 255.255.255.248
+      Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+        addresses:
+          regular-addresses:
+            regular-address:
+            - address: 2001:1:1:41::10
+              prefix-length: 125
+              zone: '0'
+      active: act
+      description: to dc41
+      interface-name: GigabitEthernet0/0/0/2
+    - Cisco-IOS-XR-cdp-cfg:cdp:
+        enable:
+        - null
+      Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+        addresses:
+          primary:
+            address: 10.1.40.10
+            netmask: 255.255.255.248
+      Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+        addresses:
+          regular-addresses:
+            regular-address:
+            - address: 2001:1:1:40::10
+              prefix-length: 125
+              zone: '0'
+      active: act
+      description: to dc40
+      interface-name: GigabitEthernet0/0/0/3
+  Cisco-IOS-XR-infra-rsi-cfg:vrfs:
+    vrf:
+    - afs:
+        af:
+        - Cisco-IOS-XR-ipv4-bgp-cfg:bgp:
+            export-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 9
+                    as-index: 9
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+            import-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 9
+                    as-index: 9
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+          af-name: ipv4
+          create:
+          - null
+          saf-name: unicast
+          topology-name: default
+        - Cisco-IOS-XR-ipv4-bgp-cfg:bgp:
+            export-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 9
+                    as-index: 9
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+            import-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 9
+                    as-index: 9
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+          af-name: ipv6
+          create:
+          - null
+          saf-name: unicast
+          topology-name: default
+      create:
+      - null
+      vrf-name: red
+    - afs:
+        af:
+        - Cisco-IOS-XR-ipv4-bgp-cfg:bgp:
+            export-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 12
+                    as-index: 12
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+            import-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 12
+                    as-index: 12
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+          af-name: ipv4
+          create:
+          - null
+          saf-name: unicast
+          topology-name: default
+        - Cisco-IOS-XR-ipv4-bgp-cfg:bgp:
+            export-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 12
+                    as-index: 12
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+            import-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 12
+                    as-index: 12
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+          af-name: ipv6
+          create:
+          - null
+          saf-name: unicast
+          topology-name: default
+      create:
+      - null
+      vrf-name: blue
+    - afs:
+        af:
+        - Cisco-IOS-XR-ipv4-bgp-cfg:bgp:
+            export-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 10
+                    as-index: 10
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+            import-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 10
+                    as-index: 10
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+          af-name: ipv4
+          create:
+          - null
+          saf-name: unicast
+          topology-name: default
+        - Cisco-IOS-XR-ipv4-bgp-cfg:bgp:
+            export-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 10
+                    as-index: 10
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+            import-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 10
+                    as-index: 10
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+          af-name: ipv6
+          create:
+          - null
+          saf-name: unicast
+          topology-name: default
+      create:
+      - null
+      vrf-name: main
+    - afs:
+        af:
+        - Cisco-IOS-XR-ipv4-bgp-cfg:bgp:
+            export-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 11
+                    as-index: 11
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+            import-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 11
+                    as-index: 11
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+          af-name: ipv4
+          create:
+          - null
+          saf-name: unicast
+          topology-name: default
+        - Cisco-IOS-XR-ipv4-bgp-cfg:bgp:
+            export-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 11
+                    as-index: 11
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+            import-route-targets:
+              route-targets:
+                route-target:
+                - as-or-four-byte-as:
+                  - as: 11
+                    as-index: 11
+                    as-xx: 0
+                    stitching-rt: 0
+                  type: as
+          af-name: ipv6
+          create:
+          - null
+          saf-name: unicast
+          topology-name: default
+      create:
+      - null
+      vrf-name: green
+  Cisco-IOS-XR-ip-static-cfg:router-static:
+    default-vrf:
+      address-family:
+        vrfipv4:
+          vrf-unicast:
+            vrf-prefixes:
+              vrf-prefix:
+              - prefix: 10.1.40.11
+                prefix-length: 32
+                vrf-route:
+                  vrf-next-hop-table:
+                    vrf-next-hop-interface-name:
+                    - interface-name: GigabitEthernet0/0/0/3
+              - prefix: 10.1.41.11
+                prefix-length: 32
+                vrf-route:
+                  vrf-next-hop-table:
+                    vrf-next-hop-interface-name:
+                    - interface-name: GigabitEthernet0/0/0/2
+        vrfipv6:
+          vrf-unicast:
+            vrf-prefixes:
+              vrf-prefix:
+              - prefix: 'fc00::'
+                prefix-length: 40
+                vrf-route:
+                  vrf-next-hop-table:
+                    vrf-next-hop-interface-name:
+                    - interface-name: Null0
+              - prefix: 'fc00:0:1000::'
+                prefix-length: 48
+                vrf-route:
+                  vrf-next-hop-table:
+                    vrf-next-hop-interface-name:
+                    - interface-name: Null0
+  Cisco-IOS-XR-ipv4-bgp-cfg:bgp:
+    instance:
+    - instance-as:
+      - as: 0
+        four-byte-as:
+        - as: 65000
+          bgp-running:
+          - null
+          default-vrf:
+            bgp-entity:
+              neighbor-groups:
+                neighbor-group:
+                - bmp-activates:
+                    bmp-activate:
+                    - server-id: 1
+                  create:
+                  - null
+                  egress-peer-engineering: true
+                  neighbor-group-afs:
+                    neighbor-group-af:
+                    - activate:
+                      - null
+                      af-name: ipv4-unicast
+                      route-policy-in: pass
+                      route-policy-out: pass
+                  neighbor-group-name: ebgp-v4
+                - bmp-activates:
+                    bmp-activate:
+                    - server-id: 1
+                  create:
+                  - null
+                  egress-peer-engineering: true
+                  neighbor-group-afs:
+                    neighbor-group-af:
+                    - activate:
+                      - null
+                      af-name: vpnv4-unicast
+                      next-hop-unchanged: true
+                      route-policy-in: pass
+                      route-policy-out: pass
+                    - activate:
+                      - null
+                      af-name: ipv6-unicast
+                      route-policy-in: pass
+                      route-policy-out: pass
+                    - activate:
+                      - null
+                      af-name: vpnv6-unicast
+                      next-hop-unchanged: true
+                      route-policy-in: pass
+                      route-policy-out: pass
+                    - activate:
+                      - null
+                      af-name: lsls
+                      route-policy-in: pass
+                      route-policy-out: pass
+                  neighbor-group-name: ebgp-v6
+                - create:
+                  - null
+                  neighbor-group-afs:
+                    neighbor-group-af:
+                    - activate:
+                      - null
+                      af-name: ipv4-unicast
+                      next-hop-self: true
+                    - activate:
+                      - null
+                      af-name: ipv4-labeled-unicast
+                      next-hop-self: true
+                    - activate:
+                      - null
+                      af-name: vpnv4-unicast
+                      next-hop-self: true
+                  neighbor-group-name: ibgp-v4
+                  remote-as:
+                    as-xx: 0
+                    as-yy: 65000
+                  update-source-interface: Loopback0
+                - create:
+                  - null
+                  neighbor-group-afs:
+                    neighbor-group-af:
+                    - activate:
+                      - null
+                      af-name: ipv6-unicast
+                      next-hop-self: true
+                    - activate:
+                      - null
+                      af-name: vpnv6-unicast
+                      next-hop-self: true
+                  neighbor-group-name: ibgp-v6
+                  remote-as:
+                    as-xx: 0
+                    as-yy: 65000
+                  update-source-interface: Loopback0
+              neighbors:
+                neighbor:
+                - create:
+                  - null
+                  description: iBGP to r25 RR
+                  neighbor-address: 10.0.0.25
+                  neighbor-afs:
+                    neighbor-af:
+                    - activate:
+                      - null
+                      af-name: vpnv4-unicast
+                      route-policy-out: SET_COLOR_ALL_VPNV4
+                    - activate:
+                      - null
+                      af-name: vpnv6-unicast
+                      route-policy-out: SET_COLOR_ALL_VPNV6
+                    - activate:
+                      - null
+                      af-name: lsls
+                      route-policy-in: drop
+                      route-policy-out: pass
+                  neighbor-group-add-member: ibgp-v4
+                - create:
+                  - null
+                  description: iBGP to r26 RR
+                  neighbor-address: 10.0.0.26
+                  neighbor-afs:
+                    neighbor-af:
+                    - activate:
+                      - null
+                      af-name: vpnv4-unicast
+                      route-policy-out: SET_COLOR_ALL_VPNV4
+                    - activate:
+                      - null
+                      af-name: vpnv6-unicast
+                      route-policy-out: SET_COLOR_ALL_VPNV6
+                    - activate:
+                      - null
+                      af-name: lsls
+                      route-policy-in: drop
+                      route-policy-out: pass
+                  neighbor-group-add-member: ibgp-v4
+                - create:
+                  - null
+                  description: eBGPv4 to dc40
+                  neighbor-address: 10.1.40.11
+                  neighbor-group-add-member: ebgp-v4
+                  remote-as:
+                    as-xx: 0
+                    as-yy: 65040
+                - create:
+                  - null
+                  description: eBGPv4 to dc41
+                  neighbor-address: 10.1.41.11
+                  neighbor-group-add-member: ebgp-v4
+                  remote-as:
+                    as-xx: 0
+                    as-yy: 65041
+                - create:
+                  - null
+                  description: iBGPv6 to r25 RR
+                  neighbor-address: fc00:0:25::1
+                  neighbor-afs:
+                    neighbor-af:
+                    - activate:
+                      - null
+                      af-name: vpnv4-unicast
+                      route-policy-in: LP_IN_V4
+                      route-policy-out: SET_COLOR_ALL_VPNV4
+                    - activate:
+                      - null
+                      af-name: vpnv6-unicast
+                      route-policy-in: LP_IN_V6
+                      route-policy-out: SET_COLOR_ALL_VPNV6
+                  neighbor-group-add-member: ibgp-v6
+                - create:
+                  - null
+                  description: iBGPv6 to r26 RR
+                  neighbor-address: fc00:0:26::1
+                  neighbor-afs:
+                    neighbor-af:
+                    - activate:
+                      - null
+                      af-name: vpnv4-unicast
+                      route-policy-in: LP_IN_V4
+                      route-policy-out: SET_COLOR_ALL_VPNV4
+                    - activate:
+                      - null
+                      af-name: vpnv6-unicast
+                      route-policy-in: LP_IN_V6
+                      route-policy-out: SET_COLOR_ALL_VPNV6
+                  neighbor-group-add-member: ibgp-v6
+                - create:
+                  - null
+                  ebgp-multihop:
+                    max-hop-count: 255
+                    mpls-deactivation: false
+                  neighbor-address: fc00:0:40::1
+                  neighbor-afs:
+                    neighbor-af:
+                    - activate:
+                      - null
+                      af-name: vpnv4-unicast
+                      next-hop-unchanged: true
+                      route-policy-in: pass
+                      route-policy-out: pass
+                    - activate:
+                      - null
+                      af-name: vpnv6-unicast
+                      next-hop-unchanged: true
+                      route-policy-in: pass
+                      route-policy-out: pass
+                    - activate:
+                      - null
+                      af-name: lsls
+                      route-policy-in: pass
+                      route-policy-out: pass
+                  remote-as:
+                    as-xx: 0
+                    as-yy: 65040
+                  shutdown: true
+                  update-source-interface: Loopback0
+                - create:
+                  - null
+                  ebgp-multihop:
+                    max-hop-count: 255
+                    mpls-deactivation: false
+                  neighbor-address: fc00:0:41::1
+                  neighbor-afs:
+                    neighbor-af:
+                    - activate:
+                      - null
+                      af-name: vpnv4-unicast
+                      next-hop-unchanged: true
+                      route-policy-in: pass
+                      route-policy-out: pass
+                    - activate:
+                      - null
+                      af-name: vpnv6-unicast
+                      next-hop-unchanged: true
+                      route-policy-in: pass
+                      route-policy-out: pass
+                    - activate:
+                      - null
+                      af-name: lsls
+                      route-policy-in: pass
+                      route-policy-out: pass
+                  remote-as:
+                    as-xx: 0
+                    as-yy: 65041
+                  shutdown: true
+                  update-source-interface: Loopback0
+                - create:
+                  - null
+                  description: eBGPv6 to dc40
+                  neighbor-address: 2001:1:1:40::11
+                  neighbor-group-add-member: ebgp-v6
+                  remote-as:
+                    as-xx: 0
+                    as-yy: 65040
+                - create:
+                  - null
+                  description: eBGPv6 to dc41
+                  neighbor-address: 2001:1:1:41::11
+                  neighbor-group-add-member: ebgp-v6
+                  remote-as:
+                    as-xx: 0
+                    as-yy: 65041
+            global:
+              best-path-as-multipath-relax:
+              - null
+              global-afs:
+                global-af:
+                - additional-paths-receive: enable
+                  af-name: ipv4-unicast
+                  ebgp:
+                    paths-value: 32
+                    selective: false
+                  enable:
+                  - null
+                  segment-routing:
+                    srv6:
+                      enable:
+                      - null
+                      locator-name: MAIN
+                  sourced-networks:
+                    sourced-network:
+                    - network-addr: 10.0.0.1
+                      network-prefix: 32
+                      route-policy-name: SID(1)
+                - af-name: vpnv4-unicast
+                  enable:
+                  - null
+                  retain-rt:
+                    all: true
+                - additional-paths-receive: enable
+                  af-name: ipv6-unicast
+                  ebgp:
+                    paths-value: 32
+                    selective: false
+                  enable:
+                  - null
+                  sourced-networks:
+                    sourced-network:
+                    - network-addr: 'fc00::'
+                      network-prefix: 40
+                    - network-addr: fc00:0:1::1
+                      network-prefix: 128
+                    - network-addr: 'fc00:0:1000::'
+                      network-prefix: 48
+                - af-name: vpnv6-unicast
+                  enable:
+                  - null
+                  retain-rt:
+                    all: true
+                - af-name: lsls
+                  enable:
+                  - null
+              router-id: 10.0.0.1
+              segment-routing-global:
+                srv6-global:
+                  enable:
+                  - null
+                  locator-name: MAIN
+          vrfs:
+            vrf:
+            - vrf-global:
+                exists:
+                - null
+                route-distinguisher:
+                  type: auto
+                vrf-global-afs:
+                  vrf-global-af:
+                  - af-name: ipv4-unicast
+                    connected-routes: {}
+                    enable:
+                    - null
+                    segment-routing:
+                      srv6:
+                        enable:
+                        - null
+                        locator-name: LATENCY_1
+                        srv6sid-allocation-mode:
+                          sid-allocation-mode: per-vrf
+                  - af-name: ipv6-unicast
+                    connected-routes: {}
+                    enable:
+                    - null
+                    segment-routing:
+                      srv6:
+                        enable:
+                        - null
+                        locator-name: LATENCY_1
+                        srv6sid-allocation-mode:
+                          sid-allocation-mode: per-vrf
+              vrf-name: red
+            - vrf-global:
+                exists:
+                - null
+                route-distinguisher:
+                  type: auto
+                vrf-global-afs:
+                  vrf-global-af:
+                  - af-name: ipv4-unicast
+                    connected-routes: {}
+                    enable:
+                    - null
+                    segment-routing:
+                      srv6:
+                        enable:
+                        - null
+                        locator-name: LATENCY_3
+                        srv6sid-allocation-mode:
+                          sid-allocation-mode: per-vrf
+                  - af-name: ipv6-unicast
+                    connected-routes: {}
+                    enable:
+                    - null
+                    segment-routing:
+                      srv6:
+                        enable:
+                        - null
+                        locator-name: LATENCY_3
+                        srv6sid-allocation-mode:
+                          sid-allocation-mode: per-vrf
+              vrf-name: blue
+            - vrf-global:
+                exists:
+                - null
+                route-distinguisher:
+                  type: auto
+                vrf-global-afs:
+                  vrf-global-af:
+                  - af-name: ipv4-unicast
+                    connected-routes: {}
+                    enable:
+                    - null
+                    segment-routing:
+                      srv6:
+                        enable:
+                        - null
+                        locator-name: MAIN
+                        srv6sid-allocation-mode:
+                          sid-allocation-mode: per-vrf
+                  - af-name: ipv6-unicast
+                    connected-routes: {}
+                    enable:
+                    - null
+                    segment-routing:
+                      srv6:
+                        enable:
+                        - null
+                        locator-name: MAIN
+                        srv6sid-allocation-mode:
+                          sid-allocation-mode: per-vrf
+              vrf-name: main
+            - vrf-global:
+                exists:
+                - null
+                route-distinguisher:
+                  type: auto
+                vrf-global-afs:
+                  vrf-global-af:
+                  - af-name: ipv4-unicast
+                    connected-routes: {}
+                    enable:
+                    - null
+                    segment-routing:
+                      srv6:
+                        enable:
+                        - null
+                        locator-name: LATENCY_2
+                        srv6sid-allocation-mode:
+                          sid-allocation-mode: per-vrf
+                  - af-name: ipv6-unicast
+                    connected-routes: {}
+                    enable:
+                    - null
+                    segment-routing:
+                      srv6:
+                        enable:
+                        - null
+                        locator-name: LATENCY_2
+                        srv6sid-allocation-mode:
+                          sid-allocation-mode: per-vrf
+              vrf-name: green
+      instance-name: default
+  Cisco-IOS-XR-ipv4-bgp-cfg:bmp-servers:
+    bmp-server:
+    - create:
+      - null
+      description: jalapeno GoBMP
+      flapping-delay: 60
+      host-port:
+        host: 10.251.254.199
+        port: 30511
+      initial-delay: 5
+      initial-refresh-delay:
+        delay: 25
+        spread: 2
+      server-id: 1
+      status-report-interval: 60
+      update-source-interface: MgmtEth0/RP0/CPU0/0
+  Cisco-IOS-XR-man-ems-cfg:grpc:
+    address-family: ipv4
+    enable:
+    - null
+    port: 57400
+    service-layer:
+      enable:
+      - null
+  Cisco-IOS-XR-man-netconf-cfg:netconf-yang:
+    agent:
+      ssh:
+        enable:
+        - null
+  Cisco-IOS-XR-man-xml-ttyagent-cfg:netconf:
+    agent:
+      tty:
+        enable:
+        - null
+  Cisco-IOS-XR-mpls-oam-cfg:mpls-oam:
+    enable-oam:
+    - null
+  Cisco-IOS-XR-perf-meas-cfg:performance-measurement:
+    enable-performance-measurement:
+    - null
+    interfaces:
+      interface:
+      - delay-measurement:
+          advertise-delay: 5
+          enable-delay-measurement:
+          - null
+        enable-interface:
+        - null
+        interface-name: GigabitEthernet0/0/0/0
+      - delay-measurement:
+          advertise-delay: 5
+          enable-delay-measurement:
+          - null
+        enable-interface:
+        - null
+        interface-name: GigabitEthernet0/0/0/1
+  Cisco-IOS-XR-policy-repository-cfg:routing-policy:
+    route-policies:
+      route-policy:
+      - route-policy-name: SID
+        rpl-route-policy: "route-policy SID($SID)\n  set label-index $SID\nend-policy\n"
+      - route-policy-name: drop
+        rpl-route-policy: "route-policy drop\n  drop\nend-policy\n"
+      - route-policy-name: pass
+        rpl-route-policy: "route-policy pass\n  pass\nend-policy\n"
+      - route-policy-name: LP_IN_V4
+        rpl-route-policy: "route-policy LP_IN_V4\n  if destination in (0.0.0.0/0 le
+          32) then\n    set local-preference 140\n  else\n    pass\n  endif\nend-policy\n"
+      - route-policy-name: LP_IN_V6
+        rpl-route-policy: "route-policy LP_IN_V6\n  if destination in (::/0 le 128)
+          then\n    set local-preference 140\n  else\n    pass\n  endif\nend-policy\n"
+      - route-policy-name: DC1_routes
+        rpl-route-policy: "route-policy DC1_routes\n  if destination in DC1 then\n
+          \   pass\n  endif\nend-policy\n"
+      - route-policy-name: dc-aggregate
+        rpl-route-policy: "route-policy dc-aggregate\n  if destination in DC1 then\n
+          \   pass\n  else\n    drop\n  endif\nend-policy\n"
+      - route-policy-name: SET_COLOR_ALL_VPNV4
+        rpl-route-policy: "route-policy SET_COLOR_ALL_VPNV4\n  if extcommunity rt
+          matches-any red-rt-set_v4 then\n    set extcommunity color COLOR_10\n  elseif
+          extcommunity rt matches-any main-rt-set_v4 then\n    set extcommunity color
+          COLOR_20\n  elseif extcommunity rt matches-any green-rt-set_v4 then\n    set
+          extcommunity color COLOR_30\n  elseif extcommunity rt matches-any blue-rt-set_v4
+          then\n    set extcommunity color COLOR_40\n  else\n    pass\n  endif\nend-policy\n"
+      - route-policy-name: SET_COLOR_ALL_VPNV6
+        rpl-route-policy: "route-policy SET_COLOR_ALL_VPNV6\n  if extcommunity rt
+          matches-any red-rt-set_v6 then\n    set extcommunity color COLOR_100\n  elseif
+          extcommunity rt matches-any main-rt-set_v6 then\n    set extcommunity color
+          COLOR_200\n  elseif extcommunity rt matches-any green-rt-set_v6 then\n    set
+          extcommunity color COLOR_300\n  elseif extcommunity rt matches-any blue-rt-set_v6
+          then\n    set extcommunity color COLOR_400\n  else\n    pass\n  endif\nend-policy\n"
+    sets:
+      extended-community-opaque-sets:
+        extended-community-opaque-set:
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_10\n  10\nend-set\n"
+          set-name: COLOR_10
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_20\n  20\nend-set\n"
+          set-name: COLOR_20
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_30\n  30\nend-set\n"
+          set-name: COLOR_30
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_40\n  40\nend-set\n"
+          set-name: COLOR_40
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_100\n
+            \ 100\nend-set\n"
+          set-name: COLOR_100
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_200\n
+            \ 200\nend-set\n"
+          set-name: COLOR_200
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_300\n
+            \ 300\nend-set\n"
+          set-name: COLOR_300
+        - rpl-extended-community-opaque-set: "extcommunity-set opaque COLOR_400\n
+            \ 400\nend-set\n"
+          set-name: COLOR_400
+      extended-community-rt-sets:
+        extended-community-rt-set:
+        - rpl-extended-community-rt-set: "extcommunity-set rt red-rt-set_v4\n  9:9\nend-set\n"
+          set-name: red-rt-set_v4
+        - rpl-extended-community-rt-set: "extcommunity-set rt red-rt-set_v6\n  9:9\nend-set\n"
+          set-name: red-rt-set_v6
+        - rpl-extended-community-rt-set: "extcommunity-set rt blue-rt-set_v4\n  12:12\nend-set\n"
+          set-name: blue-rt-set_v4
+        - rpl-extended-community-rt-set: "extcommunity-set rt blue-rt-set_v6\n  12:12\nend-set\n"
+          set-name: blue-rt-set_v6
+        - rpl-extended-community-rt-set: "extcommunity-set rt main-rt-set_v4\n  10:10\nend-set\n"
+          set-name: main-rt-set_v4
+        - rpl-extended-community-rt-set: "extcommunity-set rt main-rt-set_v6\n  10:10\nend-set\n"
+          set-name: main-rt-set_v6
+        - rpl-extended-community-rt-set: "extcommunity-set rt green-rt-set_v4\n  11:11\nend-set\n"
+          set-name: green-rt-set_v4
+        - rpl-extended-community-rt-set: "extcommunity-set rt green-rt-set_v6\n  11:11\nend-set\n"
+          set-name: green-rt-set_v6
+      prefix-sets:
+        prefix-set:
+        - rpl-prefix-set: "prefix-set DC1\n  fc00:0:40::/44 le 128,\n  fc00:1:40::/44
+            le 128\nend-set\n"
+          set-name: DC1
+  Cisco-IOS-XR-segment-routing-ms-cfg:sr:
+    Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering:
+      on-demand-colors:
+        on-demand-color:
+        - color: 10
+          on-demand-color-dyn-mpls:
+            on-demand-color-dyn-mpls-metric:
+              metric-type: latency
+            on-demand-color-dyn-mpls-pce: {}
+        - color: 20
+          on-demand-color-dyn-mpls:
+            on-demand-color-dyn-mpls-metric:
+              metric-type: latency
+            on-demand-color-dyn-mpls-pce: {}
+        - color: 30
+          on-demand-color-dyn-mpls:
+            on-demand-color-dyn-mpls-metric:
+              metric-type: latency
+            on-demand-color-dyn-mpls-pce: {}
+        - color: 40
+          on-demand-color-dyn-mpls:
+            on-demand-color-dyn-mpls-metric:
+              metric-type: latency
+            on-demand-color-dyn-mpls-pce: {}
+        - color: 100
+          on-demand-color-dyn-mpls:
+            on-demand-color-dyn-mpls-metric:
+              metric-type: latency
+            on-demand-color-dyn-mpls-pce: {}
+          srv6:
+            locator:
+              behavior: ub6-insert-reduced
+              binding-sid-type: srv6-dynamic
+              locator-name: MAIN
+        - color: 200
+          on-demand-color-dyn-mpls:
+            on-demand-color-dyn-mpls-metric:
+              metric-type: latency
+            on-demand-color-dyn-mpls-pce: {}
+          srv6:
+            locator:
+              behavior: ub6-insert-reduced
+              binding-sid-type: srv6-dynamic
+              locator-name: MAIN
+      pcc:
+        ipv6-source-address: fc00:0:1::1
+        pce-peer-v6s:
+          pce-peer-v6:
+          - pce-address: fc00:0:25::1
+            precedence: 100
+      policies:
+        policy:
+        - candidate-paths:
+            preferences:
+              preference:
+              - path-index: 100
+                path-infos:
+                  path-info:
+                  - hop-type: mpls
+                    segment-list-name: xrd356
+                    type: explicit
+          policy-color-endpoint:
+            color: 400
+            end-point-address: fc00:0:6::1
+            end-point-type: end-point-type-ipv6
+          policy-name: low-latency-xrd356
+          srv6:
+            locator:
+              behavior: ub6-insert-reduced
+              binding-sid-type: srv6-dynamic
+              locator-name: LATENCY_3
+        - candidate-paths:
+            preferences:
+              preference:
+              - path-index: 100
+                path-infos:
+                  path-info:
+                  - hop-type: mpls
+                    segment-list-name: xrd01_xrd13_algo129
+                    type: explicit
+          policy-color-endpoint:
+            color: 300
+            end-point-address: fc00:0:13::1
+            end-point-type: end-point-type-ipv6
+          policy-name: xrd01_xrd13_algo129
+          srv6:
+            locator:
+              behavior: ub6-insert-reduced
+              binding-sid-type: srv6-dynamic
+              locator-name: MAIN
+      segment-lists:
+        explicit-segments:
+          explicit-segment:
+          - path-name: xrd356
+            segment-list-srv6:
+              srv6-segments:
+                srv6-segment:
+                - address: 'fc00:3:3::'
+                  hop-type: srv6sid
+                  index: 10
+                - address: 'fc00:3:5::'
+                  hop-type: srv6sid
+                  index: 20
+                - address: 'fc00:3:6:e005::'
+                  hop-type: srv6sid
+                  index: 40
+          - path-name: xrd01_xrd13_algo129
+            segment-list-srv6:
+              srv6-segments:
+                srv6-segment:
+                - address: 'fc00:2:2::'
+                  hop-type: srv6sid
+                  index: 10
+                - address: 'fc00:2:4::'
+                  hop-type: srv6sid
+                  index: 20
+                - address: 'fc00:2:8::'
+                  hop-type: srv6sid
+                  index: 30
+                - address: 'fc00:2:11::'
+                  hop-type: srv6sid
+                  index: 40
+                - address: 'fc00:2:13::'
+                  hop-type: srv6sid
+                  index: 50
+                - address: 'fc00:2:13:e009::'
+                  hop-type: srv6sid
+                  index: 60
+        segment-lists-srv6:
+          segment-lists-srv6-format-type: micro-sid
+    Cisco-IOS-XR-segment-routing-srv6-cfg:srv6:
+      enable:
+      - null
+      encapsulation:
+        source-address: fc00:0:1::1
+      locators:
+        locators:
+          locator:
+          - locator-enable:
+            - null
+            micro-segment:
+              behavior: unode-psp-usd
+            name: MAIN
+            prefix:
+              prefix: 'fc00:0:1::'
+              prefix-length: 48
+          - algorithm: 128
+            locator-enable:
+            - null
+            micro-segment:
+              behavior: unode-psp-usd
+            name: LATENCY_1
+            prefix:
+              prefix: 'fc00:1:1::'
+              prefix-length: 48
+          - algorithm: 129
+            locator-enable:
+            - null
+            micro-segment:
+              behavior: unode-psp-usd
+            name: LATENCY_2
+            prefix:
+              prefix: 'fc00:2:1::'
+              prefix-length: 48
+          - algorithm: 130
+            locator-enable:
+            - null
+            micro-segment:
+              behavior: unode-psp-usd
+            name: LATENCY_3
+            prefix:
+              prefix: 'fc00:3:1::'
+              prefix-length: 48
+    enable:
+    - null
+    global-block:
+      lower-bound: 100000
+      upper-bound: 163999
+  Cisco-IOS-XR-shellutil-cfg:host-names:
+    host-name: xrd01
+  Cisco-IOS-XR-telemetry-model-driven-cfg:telemetry-model-driven:
+    destination-groups:
+      destination-group:
+      - destination-id: jalapeno
+        ipv4-destinations:
+          ipv4-destination:
+          - destination-port: 32400
+            encoding: self-describing-gpb
+            ipv4-address: 10.251.254.199
+            protocol:
+              no-tls:
+              - null
+              protocol: grpc
+    enable:
+    - null
+    sensor-groups:
+      sensor-group:
+      - sensor-group-identifier: cisco_models
+      - sensor-group-identifier: openconfig_interfaces
+        sensor-paths:
+          sensor-path:
+          - telemetry-sensor-path: openconfig-interfaces:interfaces/interface
+    subscriptions:
+      subscription:
+      - destination-profiles:
+          destination-profile:
+          - destination-id: jalapeno
+        sensor-profiles:
+          sensor-profile:
+          - sample-interval: 10000
+            sensorgroupid: cisco_models
+          - sample-interval: 10000
+            sensorgroupid: openconfig_interfaces
+        source-interface: MgmtEth0/RP0/CPU0/0
+        subscription-identifier: base_metrics
+  Cisco-IOS-XR-um-aaa-cfg:aaa:
+    Cisco-IOS-XR-um-aaa-task-user-cfg:usernames:
+      username:
+      - group:
+          cisco-support: {}
+          root-lr: {}
+        name: cisco
+        ordering-index: 0
+        secret:
+          ten: $6$GXFSDMYr1txD....$09ETAo1VMaFVXEu9HMDuV9y8fpXbZIHhgWe8nqvxotAaOOaTCxsC8QBzp3g1aVHFZUOtPuLFeLOaL.XsIpQHw.
+  Cisco-IOS-XR-um-call-home-cfg:call-home:
+    contact:
+      smart-licensing: {}
+    profiles:
+      profile:
+      - active: {}
+        destination:
+          transport-method:
+            email:
+              disable: {}
+            http: {}
+        profile-name: CiscoTAC-1
+    service:
+      active: {}
+  Cisco-IOS-XR-um-cdp-cfg:cdp:
+    enable: {}
+  Cisco-IOS-XR-um-grpc-cfg:grpc:
+    address-family:
+      ipv4: {}
+    port: 57400
+    service-layer: {}
+  Cisco-IOS-XR-um-hostname-cfg:hostname:
+    system-network-name: xrd01
+  Cisco-IOS-XR-um-interface-cfg:interfaces:
+    interface:
+    - interface-name: Loopback0
+      ipv4:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          address:
+            address: 10.0.0.1
+            netmask: 255.255.255.255
+      ipv6:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          ipv6-address:
+          - address: fc00:0:1::1
+            prefix-length: 128
+            zone: 0
+    - Cisco-IOS-XR-um-if-vrf-cfg:vrf: red
+      interface-name: Loopback9
+      ipv4:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          address:
+            address: 10.9.1.1
+            netmask: 255.255.255.0
+      ipv6:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          ipv6-address:
+          - address: 10:9:1::1
+            prefix-length: 128
+            zone: 0
+    - Cisco-IOS-XR-um-if-vrf-cfg:vrf: main
+      interface-name: Loopback10
+      ipv4:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          address:
+            address: 10.10.1.1
+            netmask: 255.255.255.0
+      ipv6:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          ipv6-address:
+          - address: 10:10:1::1
+            prefix-length: 128
+            zone: 0
+    - Cisco-IOS-XR-um-if-vrf-cfg:vrf: green
+      interface-name: Loopback11
+      ipv4:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          address:
+            address: 10.11.1.1
+            netmask: 255.255.255.0
+      ipv6:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          ipv6-address:
+          - address: 10:11:1::1
+            prefix-length: 128
+            zone: 0
+    - Cisco-IOS-XR-um-if-vrf-cfg:vrf: blue
+      interface-name: Loopback12
+      ipv4:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          address:
+            address: 10.12.1.1
+            netmask: 255.255.255.0
+      ipv6:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          ipv6-address:
+          - address: 10:12:1::1
+            prefix-length: 128
+            zone: 0
+    - description: mgt
+      interface-name: MgmtEth0/RP0/CPU0/0
+      ipv4:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          address:
+            address: 10.251.254.101
+            netmask: 255.255.255.0
+    - Cisco-IOS-XR-um-cdp-cfg:cdp: {}
+      description: to r02
+      interface-name: GigabitEthernet0/0/0/0
+      ipv4:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          address:
+            address: 10.1.1.8
+            netmask: 255.255.255.254
+      ipv6:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          ipv6-address:
+          - address: 2001:1:1:1::8
+            prefix-length: 127
+            zone: 0
+    - Cisco-IOS-XR-um-cdp-cfg:cdp: {}
+      description: to r03
+      interface-name: GigabitEthernet0/0/0/1
+      ipv4:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          address:
+            address: 10.1.1.10
+            netmask: 255.255.255.254
+      ipv6:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          ipv6-address:
+          - address: 2001:1:1:1::10
+            prefix-length: 127
+            zone: 0
+    - Cisco-IOS-XR-um-cdp-cfg:cdp: {}
+      description: to dc41
+      interface-name: GigabitEthernet0/0/0/2
+      ipv4:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          address:
+            address: 10.1.41.10
+            netmask: 255.255.255.248
+      ipv6:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          ipv6-address:
+          - address: 2001:1:1:41::10
+            prefix-length: 125
+            zone: 0
+    - Cisco-IOS-XR-um-cdp-cfg:cdp: {}
+      description: to dc40
+      interface-name: GigabitEthernet0/0/0/3
+      ipv4:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          address:
+            address: 10.1.40.10
+            netmask: 255.255.255.248
+      ipv6:
+        Cisco-IOS-XR-um-if-ip-address-cfg:addresses:
+          ipv6-address:
+          - address: 2001:1:1:40::10
+            prefix-length: 125
+            zone: 0
+  Cisco-IOS-XR-um-mpls-oam-cfg:mpls:
+    oam: {}
+  Cisco-IOS-XR-um-netconf-yang-cfg:netconf-yang:
+    agent:
+      ssh: {}
+  Cisco-IOS-XR-um-performance-measurement-cfg:performance-measurement:
+    interfaces:
+      interface:
+      - delay-measurement:
+          advertise-delay: 5
+        interface-name: GigabitEthernet0/0/0/0
+      - delay-measurement:
+          advertise-delay: 5
+        interface-name: GigabitEthernet0/0/0/1
+  Cisco-IOS-XR-um-router-bgp-cfg:bmp:
+    servers:
+      server:
+      - bmp-server-id: 1
+        description: jalapeno GoBMP
+        flapping-delay: 60
+        host:
+          host-name: 10.251.254.199
+          port: 30511
+        initial-delay: 5
+        initial-refresh:
+          delay:
+            initial-delay: 25
+            spread: 2
+        stats-reporting-period: 60
+        update-source: MgmtEth0/RP0/CPU0/0
+  Cisco-IOS-XR-um-router-bgp-cfg:router:
+    bgp:
+      as:
+      - address-families:
+          address-family:
+          - additional-paths:
+              receive: {}
+            af-name: ipv4-unicast
+            maximum-paths:
+              ebgp:
+                multipath: 32
+            networks:
+              network:
+              - address: 10.0.0.1
+                masklength: 32
+                route-policy: SID(1)
+            segment-routing:
+              srv6:
+                locator: MAIN
+          - af-name: vpnv4-unicast
+            retain:
+              route-target:
+                all: {}
+          - additional-paths:
+              receive: {}
+            af-name: ipv6-unicast
+            maximum-paths:
+              ebgp:
+                multipath: 32
+            networks:
+              network:
+              - address: 'fc00::'
+                masklength: 40
+              - address: fc00:0:1::1
+                masklength: 128
+              - address: 'fc00:0:1000::'
+                masklength: 48
+          - af-name: vpnv6-unicast
+            retain:
+              route-target:
+                all: {}
+          - af-name: link-state-link-state
+        as-number: 65000
+        bgp:
+          bestpath:
+            as-path:
+              multipath-relax: {}
+          router-id: 10.0.0.1
+        neighbor-groups:
+          neighbor-group:
+          - address-families:
+              address-family:
+              - af-name: ipv4-unicast
+                route-policy:
+                  in: pass
+                  out: pass
+            bmp-activate:
+              servers:
+                server:
+                - server-id: '1'
+            egress-engineering: {}
+            neighbor-group-name: ebgp-v4
+          - address-families:
+              address-family:
+              - af-name: vpnv4-unicast
+                next-hop-unchanged: {}
+                route-policy:
+                  in: pass
+                  out: pass
+              - af-name: ipv6-unicast
+                route-policy:
+                  in: pass
+                  out: pass
+              - af-name: vpnv6-unicast
+                next-hop-unchanged: {}
+                route-policy:
+                  in: pass
+                  out: pass
+              - af-name: link-state-link-state
+                route-policy:
+                  in: pass
+                  out: pass
+            bmp-activate:
+              servers:
+                server:
+                - server-id: '1'
+            egress-engineering: {}
+            neighbor-group-name: ebgp-v6
+          - address-families:
+              address-family:
+              - af-name: ipv4-unicast
+                next-hop-self: {}
+              - af-name: ipv4-labeled-unicast
+                next-hop-self: {}
+              - af-name: vpnv4-unicast
+                next-hop-self: {}
+            neighbor-group-name: ibgp-v4
+            remote-as: 65000
+            update-source: Loopback0
+          - address-families:
+              address-family:
+              - af-name: ipv6-unicast
+                next-hop-self: {}
+              - af-name: vpnv6-unicast
+                next-hop-self: {}
+            neighbor-group-name: ibgp-v6
+            remote-as: 65000
+            update-source: Loopback0
+        neighbors:
+          neighbor:
+          - address-families:
+              address-family:
+              - af-name: vpnv4-unicast
+                route-policy:
+                  out: SET_COLOR_ALL_VPNV4
+              - af-name: vpnv6-unicast
+                route-policy:
+                  out: SET_COLOR_ALL_VPNV6
+              - af-name: link-state-link-state
+                route-policy:
+                  in: drop
+                  out: pass
+            description: iBGP to r25 RR
+            neighbor-address: 10.0.0.25
+            use:
+              neighbor-group: ibgp-v4
+          - address-families:
+              address-family:
+              - af-name: vpnv4-unicast
+                route-policy:
+                  out: SET_COLOR_ALL_VPNV4
+              - af-name: vpnv6-unicast
+                route-policy:
+                  out: SET_COLOR_ALL_VPNV6
+              - af-name: link-state-link-state
+                route-policy:
+                  in: drop
+                  out: pass
+            description: iBGP to r26 RR
+            neighbor-address: 10.0.0.26
+            use:
+              neighbor-group: ibgp-v4
+          - description: eBGPv4 to dc40
+            neighbor-address: 10.1.40.11
+            remote-as: 65040
+            use:
+              neighbor-group: ebgp-v4
+          - description: eBGPv4 to dc41
+            neighbor-address: 10.1.41.11
+            remote-as: 65041
+            use:
+              neighbor-group: ebgp-v4
+          - address-families:
+              address-family:
+              - af-name: vpnv4-unicast
+                route-policy:
+                  in: LP_IN_V4
+                  out: SET_COLOR_ALL_VPNV4
+              - af-name: vpnv6-unicast
+                route-policy:
+                  in: LP_IN_V6
+                  out: SET_COLOR_ALL_VPNV6
+            description: iBGPv6 to r25 RR
+            neighbor-address: fc00:0:25::1
+            use:
+              neighbor-group: ibgp-v6
+          - address-families:
+              address-family:
+              - af-name: vpnv4-unicast
+                route-policy:
+                  in: LP_IN_V4
+                  out: SET_COLOR_ALL_VPNV4
+              - af-name: vpnv6-unicast
+                route-policy:
+                  in: LP_IN_V6
+                  out: SET_COLOR_ALL_VPNV6
+            description: iBGPv6 to r26 RR
+            neighbor-address: fc00:0:26::1
+            use:
+              neighbor-group: ibgp-v6
+          - address-families:
+              address-family:
+              - af-name: vpnv4-unicast
+                next-hop-unchanged: {}
+                route-policy:
+                  in: pass
+                  out: pass
+              - af-name: vpnv6-unicast
+                next-hop-unchanged: {}
+                route-policy:
+                  in: pass
+                  out: pass
+              - af-name: link-state-link-state
+                route-policy:
+                  in: pass
+                  out: pass
+            ebgp-multihop:
+              maximum-hop-count: 255
+            neighbor-address: fc00:0:40::1
+            remote-as: 65040
+            shutdown: {}
+            update-source: Loopback0
+          - address-families:
+              address-family:
+              - af-name: vpnv4-unicast
+                next-hop-unchanged: {}
+                route-policy:
+                  in: pass
+                  out: pass
+              - af-name: vpnv6-unicast
+                next-hop-unchanged: {}
+                route-policy:
+                  in: pass
+                  out: pass
+              - af-name: link-state-link-state
+                route-policy:
+                  in: pass
+                  out: pass
+            ebgp-multihop:
+              maximum-hop-count: 255
+            neighbor-address: fc00:0:41::1
+            remote-as: 65041
+            shutdown: {}
+            update-source: Loopback0
+          - description: eBGPv6 to dc40
+            neighbor-address: 2001:1:1:40::11
+            remote-as: 65040
+            use:
+              neighbor-group: ebgp-v6
+          - description: eBGPv6 to dc41
+            neighbor-address: 2001:1:1:41::11
+            remote-as: 65041
+            use:
+              neighbor-group: ebgp-v6
+        segment-routing:
+          srv6:
+            locator: MAIN
+        vrfs:
+          vrf:
+          - address-families:
+              address-family:
+              - af-name: ipv4-unicast
+                redistribute:
+                  connected: {}
+                segment-routing:
+                  srv6:
+                    alloc:
+                      mode:
+                        per-vrf: {}
+                    locator: LATENCY_1
+              - af-name: ipv6-unicast
+                redistribute:
+                  connected: {}
+                segment-routing:
+                  srv6:
+                    alloc:
+                      mode:
+                        per-vrf: {}
+                    locator: LATENCY_1
+            rd:
+              auto: {}
+            vrf-name: red
+          - address-families:
+              address-family:
+              - af-name: ipv4-unicast
+                redistribute:
+                  connected: {}
+                segment-routing:
+                  srv6:
+                    alloc:
+                      mode:
+                        per-vrf: {}
+                    locator: LATENCY_3
+              - af-name: ipv6-unicast
+                redistribute:
+                  connected: {}
+                segment-routing:
+                  srv6:
+                    alloc:
+                      mode:
+                        per-vrf: {}
+                    locator: LATENCY_3
+            rd:
+              auto: {}
+            vrf-name: blue
+          - address-families:
+              address-family:
+              - af-name: ipv4-unicast
+                redistribute:
+                  connected: {}
+                segment-routing:
+                  srv6:
+                    alloc:
+                      mode:
+                        per-vrf: {}
+                    locator: MAIN
+              - af-name: ipv6-unicast
+                redistribute:
+                  connected: {}
+                segment-routing:
+                  srv6:
+                    alloc:
+                      mode:
+                        per-vrf: {}
+                    locator: MAIN
+            rd:
+              auto: {}
+            vrf-name: main
+          - address-families:
+              address-family:
+              - af-name: ipv4-unicast
+                redistribute:
+                  connected: {}
+                segment-routing:
+                  srv6:
+                    alloc:
+                      mode:
+                        per-vrf: {}
+                    locator: LATENCY_2
+              - af-name: ipv6-unicast
+                redistribute:
+                  connected: {}
+                segment-routing:
+                  srv6:
+                    alloc:
+                      mode:
+                        per-vrf: {}
+                    locator: LATENCY_2
+            rd:
+              auto: {}
+            vrf-name: green
+  Cisco-IOS-XR-um-router-isis-cfg:router:
+    isis:
+      processes:
+        process:
+        - address-families:
+            address-family:
+            - advertise:
+                link:
+                  attributes: {}
+              af-name: ipv4
+              maximum-paths: 32
+              metric-style:
+                wide: {}
+              microloop:
+                avoidance:
+                  segment-routing: {}
+              mpls:
+                traffic-eng:
+                  level-2-only: {}
+                  router-id:
+                    interface: Loopback0
+              saf-name: unicast
+              segment-routing:
+                mpls:
+                  sr-prefer: false
+            - advertise:
+                link:
+                  attributes: {}
+              af-name: ipv6
+              maximum-paths: 32
+              metric-style:
+                wide: {}
+              microloop:
+                avoidance:
+                  segment-routing: {}
+              redistribute:
+                bgp:
+                  as:
+                  - as-number: 65000
+                    route-policy: dc-aggregate
+              saf-name: unicast
+              segment-routing:
+                srv6:
+                  locators:
+                    locator:
+                    - locator-name: MAIN
+                    - locator-name: LATENCY_1
+                    - locator-name: LATENCY_2
+                    - locator-name: LATENCY_3
+          affinity-maps:
+            affinity-map:
+            - affinity-map-name: red
+              bit-position: 1
+            - affinity-map-name: blue
+              bit-position: 3
+            - affinity-map-name: green
+              bit-position: 2
+          distribute:
+            link-state:
+              level: 2
+          flex-algos:
+            flex-algo:
+            - advertise-definition: {}
+              affinity:
+                include-anies:
+                  include-any:
+                  - red
+              algorithm-number: 128
+              metric-type:
+                delay: {}
+            - advertise-definition: {}
+              affinity:
+                include-anies:
+                  include-any:
+                  - green
+              algorithm-number: 129
+              metric-type:
+                delay: {}
+            - advertise-definition: {}
+              affinity:
+                include-anies:
+                  include-any:
+                  - blue
+              algorithm-number: 130
+              metric-type:
+                delay: {}
+          interfaces:
+            interface:
+            - address-families:
+                address-family:
+                - af-name: ipv4
+                  prefix-sid:
+                    algorithms:
+                      algorithm:
+                      - algorithm-number: 128
+                        index:
+                          sid-index: 128
+                      - algorithm-number: 129
+                        index:
+                          sid-index: 129
+                      - algorithm-number: 130
+                        index:
+                          sid-index: 130
+                    sid:
+                      index:
+                        sid-index: 1
+                  saf-name: unicast
+                - af-name: ipv6
+                  saf-name: unicast
+              interface-name: Loopback0
+              passive: {}
+            - address-families:
+                address-family:
+                - af-name: ipv4
+                  fast-reroute:
+                    computation:
+                      levels:
+                        level:
+                        - level-id: 2
+                          per-prefix-computation: {}
+                    per-prefix:
+                      per-prefix:
+                        levels:
+                          level:
+                          - level-id: 2
+                            ti-lfa: {}
+                        ti-lfa: {}
+                      tiebreaker:
+                        node-protecting:
+                          index:
+                            preference-order: 200
+                        srlg-disjoint:
+                          index:
+                            preference-order: 100
+                  metric:
+                    default-metric: 1
+                  saf-name: unicast
+                - af-name: ipv6
+                  fast-reroute:
+                    computation:
+                      levels:
+                        level:
+                        - level-id: 2
+                          per-prefix-computation: {}
+                    per-prefix:
+                      per-prefix:
+                        levels:
+                          level:
+                          - level-id: 2
+                            ti-lfa: {}
+                        ti-lfa: {}
+                      tiebreaker:
+                        node-protecting:
+                          index:
+                            preference-order: 200
+                        srlg-disjoint:
+                          index:
+                            preference-order: 100
+                  metric:
+                    default-metric: 1
+                  saf-name: unicast
+              affinity:
+                flex-algos:
+                  affinity-names:
+                  - red
+                  - green
+              circuit-type: level-2-only
+              interface-name: GigabitEthernet0/0/0/0
+              point-to-point: {}
+            - address-families:
+                address-family:
+                - af-name: ipv4
+                  fast-reroute:
+                    computation:
+                      levels:
+                        level:
+                        - level-id: 2
+                          per-prefix-computation: {}
+                    per-prefix:
+                      per-prefix:
+                        levels:
+                          level:
+                          - level-id: 2
+                            ti-lfa: {}
+                        ti-lfa: {}
+                      tiebreaker:
+                        node-protecting:
+                          index:
+                            preference-order: 200
+                        srlg-disjoint:
+                          index:
+                            preference-order: 100
+                  metric:
+                    default-metric: 1
+                  saf-name: unicast
+                - af-name: ipv6
+                  fast-reroute:
+                    computation:
+                      levels:
+                        level:
+                        - level-id: 2
+                          per-prefix-computation: {}
+                    per-prefix:
+                      per-prefix:
+                        levels:
+                          level:
+                          - level-id: 2
+                            ti-lfa: {}
+                        ti-lfa: {}
+                      tiebreaker:
+                        node-protecting:
+                          index:
+                            preference-order: 200
+                        srlg-disjoint:
+                          index:
+                            preference-order: 100
+                  metric:
+                    default-metric: 1
+                  saf-name: unicast
+              affinity:
+                flex-algos:
+                  affinity-names:
+                  - red
+                  - blue
+              circuit-type: level-2-only
+              interface-name: GigabitEthernet0/0/0/1
+              point-to-point: {}
+            - affinity:
+                flex-algos:
+                  affinity-names:
+                  - red
+                  - blue
+                  - green
+              interface-name: GigabitEthernet0/0/0/2
+          nets:
+            net:
+            - net-id: 49.0901.0000.0000.0001.00
+          nsf:
+            ietf: {}
+          process-id: '100'
+  Cisco-IOS-XR-um-router-static-cfg:router:
+    static:
+      address-family:
+        ipv4:
+          unicast:
+            prefixes:
+              prefix:
+              - nexthop-interfaces:
+                  nexthop-interface:
+                  - interface-name: GigabitEthernet0/0/0/3
+                prefix-address: 10.1.40.11
+                prefix-length: 32
+              - nexthop-interfaces:
+                  nexthop-interface:
+                  - interface-name: GigabitEthernet0/0/0/2
+                prefix-address: 10.1.41.11
+                prefix-length: 32
+        ipv6:
+          unicast:
+            prefixes:
+              prefix:
+              - nexthop-interfaces:
+                  nexthop-interface:
+                  - interface-name: Null0
+                prefix-address: 'fc00::'
+                prefix-length: 40
+              - nexthop-interfaces:
+                  nexthop-interface:
+                  - interface-name: Null0
+                prefix-address: 'fc00:0:1000::'
+                prefix-length: 48
+  Cisco-IOS-XR-um-segment-routing-cfg:segment-routing:
+    Cisco-IOS-XR-um-segment-routing-srv6-cfg:srv6:
+      encapsulation:
+        source-address: fc00:0:1::1
+      locators:
+        locator:
+        - locator-name: MAIN
+          micro-segment:
+            behavior:
+              unode:
+                psp-usd: {}
+          prefix:
+            address: 'fc00:0:1::'
+            length: 48
+        - algorithm: 128
+          locator-name: LATENCY_1
+          micro-segment:
+            behavior:
+              unode:
+                psp-usd: {}
+          prefix:
+            address: 'fc00:1:1::'
+            length: 48
+        - algorithm: 129
+          locator-name: LATENCY_2
+          micro-segment:
+            behavior:
+              unode:
+                psp-usd: {}
+          prefix:
+            address: 'fc00:2:1::'
+            length: 48
+        - algorithm: 130
+          locator-name: LATENCY_3
+          micro-segment:
+            behavior:
+              unode:
+                psp-usd: {}
+          prefix:
+            address: 'fc00:3:1::'
+            length: 48
+    global-block:
+      lower-bound: 100000
+      upper-bound: 163999
+  Cisco-IOS-XR-um-ssh-cfg:ssh:
+    server:
+      netconf:
+        vrfs:
+          vrf:
+          - vrf-name: default
+      rate-limit: 600
+      session-limit: 100
+      v2: {}
+      vrfs:
+        vrf:
+        - vrf-name: default
+  Cisco-IOS-XR-um-telemetry-model-driven-cfg:telemetry:
+    model-driven:
+      destination-groups:
+        destination-group:
+        - address-family:
+            ipv4:
+              address:
+              - address: 10.251.254.199
+                encoding:
+                  self-describing-gpb: {}
+                port-number: 32400
+                protocol:
+                  grpc:
+                    no-tls: {}
+          destination-group-id: jalapeno
+      sensor-groups:
+        sensor-group:
+        - sensor-group-id: cisco_models
+        - sensor-group-id: openconfig_interfaces
+          sensor-paths:
+            sensor-path:
+            - sensor-path-id: openconfig-interfaces:interfaces/interface
+      subscriptions:
+        subscription:
+        - destinations:
+            destination:
+            - destination-id: jalapeno
+          sensor-groups:
+            sensor-group:
+            - sample-interval: 10000
+              sensor-group-id: cisco_models
+            - sample-interval: 10000
+              sensor-group-id: openconfig_interfaces
+          source-interface: MgmtEth0/RP0/CPU0/0
+          subscription-id: base_metrics
+  Cisco-IOS-XR-um-vrf-cfg:vrfs:
+    vrf:
+    - address-family:
+        ipv4:
+          unicast:
+            Cisco-IOS-XR-um-router-bgp-cfg:export:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 9
+                    index: 9
+                    stitching: false
+            Cisco-IOS-XR-um-router-bgp-cfg:import:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 9
+                    index: 9
+                    stitching: false
+        ipv6:
+          unicast:
+            Cisco-IOS-XR-um-router-bgp-cfg:export:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 9
+                    index: 9
+                    stitching: false
+            Cisco-IOS-XR-um-router-bgp-cfg:import:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 9
+                    index: 9
+                    stitching: false
+      vrf-name: red
+    - address-family:
+        ipv4:
+          unicast:
+            Cisco-IOS-XR-um-router-bgp-cfg:export:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 12
+                    index: 12
+                    stitching: false
+            Cisco-IOS-XR-um-router-bgp-cfg:import:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 12
+                    index: 12
+                    stitching: false
+        ipv6:
+          unicast:
+            Cisco-IOS-XR-um-router-bgp-cfg:export:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 12
+                    index: 12
+                    stitching: false
+            Cisco-IOS-XR-um-router-bgp-cfg:import:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 12
+                    index: 12
+                    stitching: false
+      vrf-name: blue
+    - address-family:
+        ipv4:
+          unicast:
+            Cisco-IOS-XR-um-router-bgp-cfg:export:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 10
+                    index: 10
+                    stitching: false
+            Cisco-IOS-XR-um-router-bgp-cfg:import:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 10
+                    index: 10
+                    stitching: false
+        ipv6:
+          unicast:
+            Cisco-IOS-XR-um-router-bgp-cfg:export:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 10
+                    index: 10
+                    stitching: false
+            Cisco-IOS-XR-um-router-bgp-cfg:import:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 10
+                    index: 10
+                    stitching: false
+      vrf-name: main
+    - address-family:
+        ipv4:
+          unicast:
+            Cisco-IOS-XR-um-router-bgp-cfg:export:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 11
+                    index: 11
+                    stitching: false
+            Cisco-IOS-XR-um-router-bgp-cfg:import:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 11
+                    index: 11
+                    stitching: false
+        ipv6:
+          unicast:
+            Cisco-IOS-XR-um-router-bgp-cfg:export:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 11
+                    index: 11
+                    stitching: false
+            Cisco-IOS-XR-um-router-bgp-cfg:import:
+              route-target:
+                two-byte-as-rts:
+                  two-byte-as-rt:
+                  - as-number: 11
+                    index: 11
+                    stitching: false
+      vrf-name: green
+  Cisco-IOS-XR-um-xml-agent-cfg:netconf:
+    agent:
+      tty: {}
+  openconfig-interfaces:interfaces:
+    interface:
+    - config:
+        name: Loopback0
+        type: iana-if-type:softwareLoopback
+      name: Loopback0
+      subinterfaces:
+        subinterface:
+        - index: 0
+          openconfig-if-ip:ipv4:
+            addresses:
+              address:
+              - config:
+                  ip: 10.0.0.1
+                  prefix-length: 32
+                ip: 10.0.0.1
+          openconfig-if-ip:ipv6:
+            addresses:
+              address:
+              - config:
+                  ip: fc00:0:1::1
+                  prefix-length: 128
+                ip: fc00:0:1::1
+    - config:
+        name: Loopback9
+        type: iana-if-type:softwareLoopback
+      name: Loopback9
+      subinterfaces:
+        subinterface:
+        - index: 0
+          openconfig-if-ip:ipv4:
+            addresses:
+              address:
+              - config:
+                  ip: 10.9.1.1
+                  prefix-length: 24
+                ip: 10.9.1.1
+          openconfig-if-ip:ipv6:
+            addresses:
+              address:
+              - config:
+                  ip: 10:9:1::1
+                  prefix-length: 128
+                ip: 10:9:1::1
+    - config:
+        name: Loopback10
+        type: iana-if-type:softwareLoopback
+      name: Loopback10
+      subinterfaces:
+        subinterface:
+        - index: 0
+          openconfig-if-ip:ipv4:
+            addresses:
+              address:
+              - config:
+                  ip: 10.10.1.1
+                  prefix-length: 24
+                ip: 10.10.1.1
+          openconfig-if-ip:ipv6:
+            addresses:
+              address:
+              - config:
+                  ip: 10:10:1::1
+                  prefix-length: 128
+                ip: 10:10:1::1
+    - config:
+        name: Loopback11
+        type: iana-if-type:softwareLoopback
+      name: Loopback11
+      subinterfaces:
+        subinterface:
+        - index: 0
+          openconfig-if-ip:ipv4:
+            addresses:
+              address:
+              - config:
+                  ip: 10.11.1.1
+                  prefix-length: 24
+                ip: 10.11.1.1
+          openconfig-if-ip:ipv6:
+            addresses:
+              address:
+              - config:
+                  ip: 10:11:1::1
+                  prefix-length: 128
+                ip: 10:11:1::1
+    - config:
+        name: Loopback12
+        type: iana-if-type:softwareLoopback
+      name: Loopback12
+      subinterfaces:
+        subinterface:
+        - index: 0
+          openconfig-if-ip:ipv4:
+            addresses:
+              address:
+              - config:
+                  ip: 10.12.1.1
+                  prefix-length: 24
+                ip: 10.12.1.1
+          openconfig-if-ip:ipv6:
+            addresses:
+              address:
+              - config:
+                  ip: 10:12:1::1
+                  prefix-length: 128
+                ip: 10:12:1::1
+    - config:
+        description: mgt
+        name: MgmtEth0/RP0/CPU0/0
+        type: iana-if-type:ethernetCsmacd
+      name: MgmtEth0/RP0/CPU0/0
+      openconfig-if-ethernet:ethernet:
+        config:
+          auto-negotiate: false
+      subinterfaces:
+        subinterface:
+        - index: 0
+          openconfig-if-ip:ipv4:
+            addresses:
+              address:
+              - config:
+                  ip: 10.251.254.101
+                  prefix-length: 24
+                ip: 10.251.254.101
+    - config:
+        description: to r02
+        name: GigabitEthernet0/0/0/0
+        type: iana-if-type:ethernetCsmacd
+      name: GigabitEthernet0/0/0/0
+      openconfig-if-ethernet:ethernet:
+        config:
+          auto-negotiate: false
+      subinterfaces:
+        subinterface:
+        - index: 0
+          openconfig-if-ip:ipv4:
+            addresses:
+              address:
+              - config:
+                  ip: 10.1.1.8
+                  prefix-length: 31
+                ip: 10.1.1.8
+          openconfig-if-ip:ipv6:
+            addresses:
+              address:
+              - config:
+                  ip: 2001:1:1:1::8
+                  prefix-length: 127
+                ip: 2001:1:1:1::8
+    - config:
+        description: to r03
+        name: GigabitEthernet0/0/0/1
+        type: iana-if-type:ethernetCsmacd
+      name: GigabitEthernet0/0/0/1
+      openconfig-if-ethernet:ethernet:
+        config:
+          auto-negotiate: false
+      subinterfaces:
+        subinterface:
+        - index: 0
+          openconfig-if-ip:ipv4:
+            addresses:
+              address:
+              - config:
+                  ip: 10.1.1.10
+                  prefix-length: 31
+                ip: 10.1.1.10
+          openconfig-if-ip:ipv6:
+            addresses:
+              address:
+              - config:
+                  ip: 2001:1:1:1::10
+                  prefix-length: 127
+                ip: 2001:1:1:1::10
+    - config:
+        description: to dc41
+        name: GigabitEthernet0/0/0/2
+        type: iana-if-type:ethernetCsmacd
+      name: GigabitEthernet0/0/0/2
+      openconfig-if-ethernet:ethernet:
+        config:
+          auto-negotiate: false
+      subinterfaces:
+        subinterface:
+        - index: 0
+          openconfig-if-ip:ipv4:
+            addresses:
+              address:
+              - config:
+                  ip: 10.1.41.10
+                  prefix-length: 29
+                ip: 10.1.41.10
+          openconfig-if-ip:ipv6:
+            addresses:
+              address:
+              - config:
+                  ip: 2001:1:1:41::10
+                  prefix-length: 125
+                ip: 2001:1:1:41::10
+    - config:
+        description: to dc40
+        name: GigabitEthernet0/0/0/3
+        type: iana-if-type:ethernetCsmacd
+      name: GigabitEthernet0/0/0/3
+      openconfig-if-ethernet:ethernet:
+        config:
+          auto-negotiate: false
+      subinterfaces:
+        subinterface:
+        - index: 0
+          openconfig-if-ip:ipv4:
+            addresses:
+              address:
+              - config:
+                  ip: 10.1.40.10
+                  prefix-length: 29
+                ip: 10.1.40.10
+          openconfig-if-ip:ipv6:
+            addresses:
+              address:
+              - config:
+                  ip: 2001:1:1:40::10
+                  prefix-length: 125
+                ip: 2001:1:1:40::10
+  openconfig-network-instance:network-instances:
+    network-instance:
+    - config:
+        name: default
+      mpls:
+        global:
+          reserved-label-blocks:
+            reserved-label-block:
+            - config:
+                local-id: default-srgb
+                lower-bound: 100000
+                upper-bound: 163999
+              local-id: default-srgb
+      name: default
+      protocols:
+        protocol:
+        - config:
+            identifier: openconfig-policy-types:ISIS
+            name: '100'
+          identifier: openconfig-policy-types:ISIS
+          isis:
+            global:
+              afi-safi:
+                af:
+                - afi-name: openconfig-isis-types:IPV4
+                  config:
+                    afi-name: openconfig-isis-types:IPV4
+                    enabled: true
+                    safi-name: openconfig-isis-types:UNICAST
+                  safi-name: openconfig-isis-types:UNICAST
+                - afi-name: openconfig-isis-types:IPV6
+                  config:
+                    afi-name: openconfig-isis-types:IPV6
+                    enabled: true
+                    safi-name: openconfig-isis-types:UNICAST
+                  multi-topology:
+                    config:
+                      afi-name: openconfig-isis-types:IPV6
+                      safi-name: openconfig-isis-types:UNICAST
+                  safi-name: openconfig-isis-types:UNICAST
+              config:
+                max-ecmp-paths: 32
+                net:
+                - 49.0901.0000.0000.0001.00
+              graceful-restart:
+                config:
+                  enabled: true
+              segment-routing:
+                config:
+                  enabled: false
+                  srgb: default-srgb
+            interfaces:
+              interface:
+              - afi-safi:
+                  af:
+                  - afi-name: openconfig-isis-types:IPV4
+                    config:
+                      afi-name: openconfig-isis-types:IPV4
+                      enabled: true
+                      safi-name: openconfig-isis-types:UNICAST
+                    safi-name: openconfig-isis-types:UNICAST
+                  - afi-name: openconfig-isis-types:IPV6
+                    config:
+                      afi-name: openconfig-isis-types:IPV6
+                      enabled: true
+                      safi-name: openconfig-isis-types:UNICAST
+                    safi-name: openconfig-isis-types:UNICAST
+                config:
+                  enabled: true
+                  hello-padding: STRICT
+                  interface-id: Loopback0
+                  passive: true
+                interface-id: Loopback0
+                interface-ref:
+                  config:
+                    interface: Loopback0
+                levels:
+                  level:
+                  - afi-safi:
+                      af:
+                      - afi-name: openconfig-isis-types:IPV4
+                        config:
+                          afi-name: openconfig-isis-types:IPV4
+                          safi-name: openconfig-isis-types:UNICAST
+                        safi-name: openconfig-isis-types:UNICAST
+                        segment-routing:
+                          prefix-sids:
+                            prefix-sid:
+                            - config:
+                                prefix: 0.0.0.0/32
+                                sid-index: 1
+                                sid-type: Cisco-IOS-XR-openconfig-isis-ext:INDEX
+                              prefix: 0.0.0.0/32
+                    config:
+                      level-number: 1
+                    level-number: 1
+                  - afi-safi:
+                      af:
+                      - afi-name: openconfig-isis-types:IPV4
+                        config:
+                          afi-name: openconfig-isis-types:IPV4
+                          safi-name: openconfig-isis-types:UNICAST
+                        safi-name: openconfig-isis-types:UNICAST
+                        segment-routing:
+                          prefix-sids:
+                            prefix-sid:
+                            - config:
+                                prefix: 0.0.0.0/32
+                                sid-index: 1
+                                sid-type: Cisco-IOS-XR-openconfig-isis-ext:INDEX
+                              prefix: 0.0.0.0/32
+                    config:
+                      level-number: 2
+                    level-number: 2
+              - afi-safi:
+                  af:
+                  - afi-name: openconfig-isis-types:IPV4
+                    config:
+                      afi-name: openconfig-isis-types:IPV4
+                      enabled: true
+                      safi-name: openconfig-isis-types:UNICAST
+                    safi-name: openconfig-isis-types:UNICAST
+                  - afi-name: openconfig-isis-types:IPV6
+                    config:
+                      afi-name: openconfig-isis-types:IPV6
+                      enabled: true
+                      safi-name: openconfig-isis-types:UNICAST
+                    safi-name: openconfig-isis-types:UNICAST
+                config:
+                  circuit-type: POINT_TO_POINT
+                  enabled: true
+                  hello-padding: STRICT
+                  interface-id: GigabitEthernet0/0/0/0
+                  passive: false
+                interface-id: GigabitEthernet0/0/0/0
+                interface-ref:
+                  config:
+                    interface: GigabitEthernet0/0/0/0
+              - afi-safi:
+                  af:
+                  - afi-name: openconfig-isis-types:IPV4
+                    config:
+                      afi-name: openconfig-isis-types:IPV4
+                      enabled: true
+                      safi-name: openconfig-isis-types:UNICAST
+                    safi-name: openconfig-isis-types:UNICAST
+                  - afi-name: openconfig-isis-types:IPV6
+                    config:
+                      afi-name: openconfig-isis-types:IPV6
+                      enabled: true
+                      safi-name: openconfig-isis-types:UNICAST
+                    safi-name: openconfig-isis-types:UNICAST
+                config:
+                  circuit-type: POINT_TO_POINT
+                  enabled: true
+                  hello-padding: STRICT
+                  interface-id: GigabitEthernet0/0/0/1
+                  passive: false
+                interface-id: GigabitEthernet0/0/0/1
+                interface-ref:
+                  config:
+                    interface: GigabitEthernet0/0/0/1
+              - config:
+                  enabled: true
+                  hello-padding: STRICT
+                  interface-id: GigabitEthernet0/0/0/2
+                  passive: false
+                interface-id: GigabitEthernet0/0/0/2
+                interface-ref:
+                  config:
+                    interface: GigabitEthernet0/0/0/2
+            levels:
+              level:
+              - config:
+                  level-number: 2
+                level-number: 2
+                traffic-engineering:
+                  config:
+                    enabled: true
+          name: '100'
+        - config:
+            identifier: openconfig-policy-types:STATIC
+            name: DEFAULT
+          identifier: openconfig-policy-types:STATIC
+          name: DEFAULT
+          static-routes:
+            static:
+            - config:
+                prefix: 10.1.40.11/32
+              next-hops:
+                next-hop:
+                - config:
+                    index: '##GigabitEthernet0/0/0/3##'
+                    next-hop: openconfig-local-routing:LOCAL_LINK
+                  index: '##GigabitEthernet0/0/0/3##'
+                  interface-ref:
+                    config:
+                      interface: GigabitEthernet0/0/0/3
+                      subinterface: 0
+              prefix: 10.1.40.11/32
+            - config:
+                prefix: 10.1.41.11/32
+              next-hops:
+                next-hop:
+                - config:
+                    index: '##GigabitEthernet0/0/0/2##'
+                    next-hop: openconfig-local-routing:LOCAL_LINK
+                  index: '##GigabitEthernet0/0/0/2##'
+                  interface-ref:
+                    config:
+                      interface: GigabitEthernet0/0/0/2
+                      subinterface: 0
+              prefix: 10.1.41.11/32
+            - config:
+                prefix: fc00::/40
+              next-hops:
+                next-hop:
+                - config:
+                    index: '##DROP##'
+                    next-hop: openconfig-local-routing:DROP
+                  index: '##DROP##'
+              prefix: fc00::/40
+            - config:
+                prefix: fc00:0:1000::/48
+              next-hops:
+                next-hop:
+                - config:
+                    index: '##DROP##'
+                    next-hop: openconfig-local-routing:DROP
+                  index: '##DROP##'
+              prefix: fc00:0:1000::/48
+        - bgp:
+            global:
+              afi-safis:
+                afi-safi:
+                - add-paths:
+                    config:
+                      receive: true
+                  afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                    enabled: true
+                  use-multiple-paths:
+                    ebgp:
+                      config:
+                        maximum-paths: 32
+                - afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                    enabled: true
+                - add-paths:
+                    config:
+                      receive: true
+                  afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                    enabled: true
+                  use-multiple-paths:
+                    ebgp:
+                      config:
+                        maximum-paths: 32
+                - afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                    enabled: true
+              config:
+                as: 65000
+                router-id: 10.0.0.1
+            neighbors:
+              neighbor:
+              - afi-safis:
+                  afi-safi:
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - SET_COLOR_ALL_VPNV4
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                      enabled: true
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - SET_COLOR_ALL_VPNV6
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                      enabled: true
+                config:
+                  description: iBGP to r25 RR
+                  neighbor-address: 10.0.0.25
+                  peer-group: ibgp-v4
+                neighbor-address: 10.0.0.25
+              - afi-safis:
+                  afi-safi:
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - SET_COLOR_ALL_VPNV4
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                      enabled: true
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - SET_COLOR_ALL_VPNV6
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                      enabled: true
+                config:
+                  description: iBGP to r26 RR
+                  neighbor-address: 10.0.0.26
+                  peer-group: ibgp-v4
+                neighbor-address: 10.0.0.26
+              - config:
+                  description: eBGPv4 to dc40
+                  neighbor-address: 10.1.40.11
+                  peer-as: 65040
+                  peer-group: ebgp-v4
+                neighbor-address: 10.1.40.11
+              - config:
+                  description: eBGPv4 to dc41
+                  neighbor-address: 10.1.41.11
+                  peer-as: 65041
+                  peer-group: ebgp-v4
+                neighbor-address: 10.1.41.11
+              - afi-safis:
+                  afi-safi:
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - SET_COLOR_ALL_VPNV4
+                        import-policy:
+                        - LP_IN_V4
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                      enabled: true
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - SET_COLOR_ALL_VPNV6
+                        import-policy:
+                        - LP_IN_V6
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                      enabled: true
+                config:
+                  description: iBGPv6 to r25 RR
+                  neighbor-address: fc00:0:25::1
+                  peer-group: ibgp-v6
+                neighbor-address: fc00:0:25::1
+              - afi-safis:
+                  afi-safi:
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - SET_COLOR_ALL_VPNV4
+                        import-policy:
+                        - LP_IN_V4
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                      enabled: true
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - SET_COLOR_ALL_VPNV6
+                        import-policy:
+                        - LP_IN_V6
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                      enabled: true
+                config:
+                  description: iBGPv6 to r26 RR
+                  neighbor-address: fc00:0:26::1
+                  peer-group: ibgp-v6
+                neighbor-address: fc00:0:26::1
+              - afi-safis:
+                  afi-safi:
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - pass
+                        import-policy:
+                        - pass
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                      enabled: true
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - pass
+                        import-policy:
+                        - pass
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                      enabled: true
+                config:
+                  enabled: false
+                  neighbor-address: fc00:0:40::1
+                  peer-as: 65040
+                ebgp-multihop:
+                  config:
+                    enabled: true
+                    multihop-ttl: 255
+                neighbor-address: fc00:0:40::1
+                transport:
+                  config:
+                    local-address: Loopback0
+              - afi-safis:
+                  afi-safi:
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - pass
+                        import-policy:
+                        - pass
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                      enabled: true
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - pass
+                        import-policy:
+                        - pass
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                      enabled: true
+                config:
+                  enabled: false
+                  neighbor-address: fc00:0:41::1
+                  peer-as: 65041
+                ebgp-multihop:
+                  config:
+                    enabled: true
+                    multihop-ttl: 255
+                neighbor-address: fc00:0:41::1
+                transport:
+                  config:
+                    local-address: Loopback0
+              - config:
+                  description: eBGPv6 to dc40
+                  neighbor-address: 2001:1:1:40::11
+                  peer-as: 65040
+                  peer-group: ebgp-v6
+                neighbor-address: 2001:1:1:40::11
+              - config:
+                  description: eBGPv6 to dc41
+                  neighbor-address: 2001:1:1:41::11
+                  peer-as: 65041
+                  peer-group: ebgp-v6
+                neighbor-address: 2001:1:1:41::11
+            peer-groups:
+              peer-group:
+              - afi-safis:
+                  afi-safi:
+                  - afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - pass
+                        import-policy:
+                        - pass
+                    config:
+                      afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                      enabled: true
+                config:
+                  peer-group-name: ebgp-v4
+                peer-group-name: ebgp-v4
+              - afi-safis:
+                  afi-safi:
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - pass
+                        import-policy:
+                        - pass
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                      enabled: true
+                  - afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - pass
+                        import-policy:
+                        - pass
+                    config:
+                      afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                      enabled: true
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                    apply-policy:
+                      config:
+                        export-policy:
+                        - pass
+                        import-policy:
+                        - pass
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                      enabled: true
+                config:
+                  peer-group-name: ebgp-v6
+                peer-group-name: ebgp-v6
+              - afi-safis:
+                  afi-safi:
+                  - afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                    config:
+                      afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                      enabled: true
+                  - afi-safi-name: openconfig-bgp-types:IPV4_LABELED_UNICAST
+                    config:
+                      afi-safi-name: openconfig-bgp-types:IPV4_LABELED_UNICAST
+                      enabled: true
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV4_UNICAST
+                      enabled: true
+                config:
+                  peer-as: 65000
+                  peer-group-name: ibgp-v4
+                peer-group-name: ibgp-v4
+                transport:
+                  config:
+                    local-address: Loopback0
+              - afi-safis:
+                  afi-safi:
+                  - afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                    config:
+                      afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                      enabled: true
+                  - afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                    config:
+                      afi-safi-name: openconfig-bgp-types:L3VPN_IPV6_UNICAST
+                      enabled: true
+                config:
+                  peer-as: 65000
+                  peer-group-name: ibgp-v6
+                peer-group-name: ibgp-v6
+                transport:
+                  config:
+                    local-address: Loopback0
+          config:
+            identifier: openconfig-policy-types:BGP
+            name: default
+          identifier: openconfig-policy-types:BGP
+          name: default
+      segment-routing:
+        srgbs:
+          srgb:
+          - config:
+              dataplane-type: MPLS
+              local-id: default-srgb
+              mpls-label-blocks:
+              - default-srgb
+            local-id: default-srgb
+      table-connections:
+        table-connection:
+        - address-family: openconfig-types:IPV6
+          config:
+            address-family: openconfig-types:IPV6
+            dst-protocol: openconfig-policy-types:ISIS
+            import-policy:
+            - dc-aggregate
+            src-protocol: openconfig-policy-types:BGP
+          dst-protocol: openconfig-policy-types:ISIS
+          src-protocol: openconfig-policy-types:BGP
+    - config:
+        enabled: true
+        enabled-address-families:
+        - openconfig-types:IPV4
+        - openconfig-types:IPV6
+        name: red
+      interfaces:
+        interface:
+        - config:
+            id: Loopback9
+            interface: Loopback9
+            subinterface: 0
+          id: Loopback9
+      name: red
+      protocols:
+        protocol:
+        - bgp:
+            global:
+              afi-safis:
+                afi-safi:
+                - afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                    enabled: true
+                - afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                    enabled: true
+              config:
+                as: 65000
+          identifier: openconfig-policy-types:BGP
+          name: default
+    - config:
+        enabled: true
+        enabled-address-families:
+        - openconfig-types:IPV4
+        - openconfig-types:IPV6
+        name: main
+      interfaces:
+        interface:
+        - config:
+            id: Loopback10
+            interface: Loopback10
+            subinterface: 0
+          id: Loopback10
+      name: main
+      protocols:
+        protocol:
+        - bgp:
+            global:
+              afi-safis:
+                afi-safi:
+                - afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                    enabled: true
+                - afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                    enabled: true
+              config:
+                as: 65000
+          identifier: openconfig-policy-types:BGP
+          name: default
+    - config:
+        enabled: true
+        enabled-address-families:
+        - openconfig-types:IPV4
+        - openconfig-types:IPV6
+        name: green
+      interfaces:
+        interface:
+        - config:
+            id: Loopback11
+            interface: Loopback11
+            subinterface: 0
+          id: Loopback11
+      name: green
+      protocols:
+        protocol:
+        - bgp:
+            global:
+              afi-safis:
+                afi-safi:
+                - afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                    enabled: true
+                - afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                    enabled: true
+              config:
+                as: 65000
+          identifier: openconfig-policy-types:BGP
+          name: default
+    - config:
+        enabled: true
+        enabled-address-families:
+        - openconfig-types:IPV4
+        - openconfig-types:IPV6
+        name: blue
+      interfaces:
+        interface:
+        - config:
+            id: Loopback12
+            interface: Loopback12
+            subinterface: 0
+          id: Loopback12
+      name: blue
+      protocols:
+        protocol:
+        - bgp:
+            global:
+              afi-safis:
+                afi-safi:
+                - afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:IPV4_UNICAST
+                    enabled: true
+                - afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                  config:
+                    afi-safi-name: openconfig-bgp-types:IPV6_UNICAST
+                    enabled: true
+              config:
+                as: 65000
+          identifier: openconfig-policy-types:BGP
+          name: default
+  openconfig-routing-policy:routing-policy:
+    defined-sets:
+      openconfig-bgp-policy:bgp-defined-sets:
+        ext-community-sets:
+          ext-community-set:
+          - config:
+              ext-community-member:
+              - '9:9'
+              ext-community-set-name: red-rt-set_v4
+            ext-community-set-name: red-rt-set_v4
+          - config:
+              ext-community-member:
+              - '9:9'
+              ext-community-set-name: red-rt-set_v6
+            ext-community-set-name: red-rt-set_v6
+          - config:
+              ext-community-member:
+              - '12:12'
+              ext-community-set-name: blue-rt-set_v4
+            ext-community-set-name: blue-rt-set_v4
+          - config:
+              ext-community-member:
+              - '12:12'
+              ext-community-set-name: blue-rt-set_v6
+            ext-community-set-name: blue-rt-set_v6
+          - config:
+              ext-community-member:
+              - '10:10'
+              ext-community-set-name: main-rt-set_v4
+            ext-community-set-name: main-rt-set_v4
+          - config:
+              ext-community-member:
+              - '10:10'
+              ext-community-set-name: main-rt-set_v6
+            ext-community-set-name: main-rt-set_v6
+          - config:
+              ext-community-member:
+              - '11:11'
+              ext-community-set-name: green-rt-set_v4
+            ext-community-set-name: green-rt-set_v4
+          - config:
+              ext-community-member:
+              - '11:11'
+              ext-community-set-name: green-rt-set_v6
+            ext-community-set-name: green-rt-set_v6
+      prefix-sets:
+        prefix-set:
+        - config:
+            mode: IPV6
+            name: DC1
+          name: DC1
+          prefixes:
+            prefix:
+            - config:
+                ip-prefix: fc00:0:40::/44
+                masklength-range: 44..128
+              ip-prefix: fc00:0:40::/44
+              masklength-range: 44..128
+            - config:
+                ip-prefix: fc00:1:40::/44
+                masklength-range: 44..128
+              ip-prefix: fc00:1:40::/44
+              masklength-range: 44..128
+    policy-definitions:
+      policy-definition:
+      - config:
+          name: SID
+        name: SID
+      - config:
+          name: drop
+        name: drop
+        statements:
+          statement:
+          - actions:
+              config:
+                policy-result: REJECT_ROUTE
+            config:
+              name: id-1
+            name: id-1
+      - config:
+          name: pass
+        name: pass
+        statements:
+          statement:
+          - actions:
+              config:
+                policy-result: ACCEPT_ROUTE
+            config:
+              name: id-1
+            name: id-1
+      - config:
+          name: LP_IN_V4
+        name: LP_IN_V4
+      - config:
+          name: LP_IN_V6
+        name: LP_IN_V6
+      - config:
+          name: DC1_routes
+        name: DC1_routes
+        statements:
+          statement:
+          - actions:
+              config:
+                policy-result: ACCEPT_ROUTE
+            conditions:
+              match-prefix-set:
+                config:
+                  match-set-options: ANY
+                  prefix-set: DC1
+            config:
+              name: id-1
+            name: id-1
+      - config:
+          name: dc-aggregate
+        name: dc-aggregate
+      - config:
+          name: SET_COLOR_ALL_VPNV4
+        name: SET_COLOR_ALL_VPNV4
+      - config:
+          name: SET_COLOR_ALL_VPNV6
+        name: SET_COLOR_ALL_VPNV6
+  openconfig-system:system:
+    aaa:
+      authentication:
+        users:
+          user:
+          - config:
+              password-hashed: $6$GXFSDMYr1txD....$09ETAo1VMaFVXEu9HMDuV9y8fpXbZIHhgWe8nqvxotAaOOaTCxsC8QBzp3g1aVHFZUOtPuLFeLOaL.XsIpQHw.
+              role: root-lr
+              username: cisco
+            username: cisco
+    config:
+      hostname: xrd01
+    openconfig-system-grpc:grpc-servers:
+      grpc-server:
+      - config:
+          enable: true
+          name: DEFAULT
+          port: 57400
+        name: DEFAULT
+    ssh-server:
+      config:
+        enable: true
+        protocol-version: V2
+        rate-limit: 600
+        session-limit: 100
+  openconfig-telemetry:telemetry-system:
+    destination-groups:
+      destination-group:
+      - config:
+          group-id: jalapeno
+        destinations:
+          destination:
+          - config:
+              destination-address: 10.251.254.199
+              destination-port: 32400
+            destination-address: 10.251.254.199
+            destination-port: 32400
+        group-id: jalapeno
+    sensor-groups:
+      sensor-group:
+      - config:
+          sensor-group-id: cisco_models
+        sensor-group-id: cisco_models
+      - config:
+          sensor-group-id: openconfig_interfaces
+        sensor-group-id: openconfig_interfaces
+        sensor-paths:
+          sensor-path:
+          - config:
+              path: openconfig-interfaces:interfaces/interface
+            path: openconfig-interfaces:interfaces/interface
+    subscriptions:
+      persistent-subscriptions:
+        persistent-subscription:
+        - config:
+            local-source-address: MgmtEth0/RP0/CPU0/0
+            name: base_metrics
+          destination-groups:
+            destination-group:
+            - config:
+                group-id: jalapeno
+              group-id: jalapeno
+          name: base_metrics
+          sensor-profiles:
+            sensor-profile:
+            - config:
+                sample-interval: '10000'
+                sensor-group: cisco_models
+              sensor-group: cisco_models
+            - config:
+                sample-interval: '10000'
+                sensor-group: openconfig_interfaces
+              sensor-group: openconfig_interfaces
+

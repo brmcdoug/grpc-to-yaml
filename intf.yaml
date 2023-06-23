@@ -1,0 +1,167 @@
+Cisco-IOS-XR-ifmgr-cfg:interface-configurations:
+  interface-configuration:
+  - Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+      addresses:
+        primary:
+          address: 10.0.0.1
+          netmask: 255.255.255.255
+    Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+      addresses:
+        regular-addresses:
+          regular-address:
+          - address: fc00:0:1::1
+            prefix-length: 128
+            zone: '0'
+    active: act
+    interface-name: Loopback0
+    interface-virtual:
+    - null
+  - Cisco-IOS-XR-infra-rsi-cfg:vrf: red
+    Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+      addresses:
+        primary:
+          address: 10.9.1.1
+          netmask: 255.255.255.0
+    Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+      addresses:
+        regular-addresses:
+          regular-address:
+          - address: 10:9:1::1
+            prefix-length: 128
+            zone: '0'
+    active: act
+    interface-name: Loopback9
+    interface-virtual:
+    - null
+  - Cisco-IOS-XR-infra-rsi-cfg:vrf: main
+    Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+      addresses:
+        primary:
+          address: 10.10.1.1
+          netmask: 255.255.255.0
+    Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+      addresses:
+        regular-addresses:
+          regular-address:
+          - address: 10:10:1::1
+            prefix-length: 128
+            zone: '0'
+    active: act
+    interface-name: Loopback10
+    interface-virtual:
+    - null
+  - Cisco-IOS-XR-infra-rsi-cfg:vrf: green
+    Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+      addresses:
+        primary:
+          address: 10.11.1.1
+          netmask: 255.255.255.0
+    Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+      addresses:
+        regular-addresses:
+          regular-address:
+          - address: 10:11:1::1
+            prefix-length: 128
+            zone: '0'
+    active: act
+    interface-name: Loopback11
+    interface-virtual:
+    - null
+  - Cisco-IOS-XR-infra-rsi-cfg:vrf: blue
+    Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+      addresses:
+        primary:
+          address: 10.12.1.1
+          netmask: 255.255.255.0
+    Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+      addresses:
+        regular-addresses:
+          regular-address:
+          - address: 10:12:1::1
+            prefix-length: 128
+            zone: '0'
+    active: act
+    interface-name: Loopback12
+    interface-virtual:
+    - null
+  - Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+      addresses:
+        primary:
+          address: 10.251.254.101
+          netmask: 255.255.255.0
+    active: act
+    description: mgt
+    interface-name: MgmtEth0/RP0/CPU0/0
+  - Cisco-IOS-XR-cdp-cfg:cdp:
+      enable:
+      - null
+    Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+      addresses:
+        primary:
+          address: 10.1.1.8
+          netmask: 255.255.255.254
+    Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+      addresses:
+        regular-addresses:
+          regular-address:
+          - address: 2001:1:1:1::8
+            prefix-length: 127
+            zone: '0'
+    active: act
+    description: to r02
+    interface-name: GigabitEthernet0/0/0/0
+  - Cisco-IOS-XR-cdp-cfg:cdp:
+      enable:
+      - null
+    Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+      addresses:
+        primary:
+          address: 10.1.1.10
+          netmask: 255.255.255.254
+    Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+      addresses:
+        regular-addresses:
+          regular-address:
+          - address: 2001:1:1:1::10
+            prefix-length: 127
+            zone: '0'
+    active: act
+    description: to r03
+    interface-name: GigabitEthernet0/0/0/1
+  - Cisco-IOS-XR-cdp-cfg:cdp:
+      enable:
+      - null
+    Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+      addresses:
+        primary:
+          address: 10.1.41.10
+          netmask: 255.255.255.248
+    Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+      addresses:
+        regular-addresses:
+          regular-address:
+          - address: 2001:1:1:41::10
+            prefix-length: 125
+            zone: '0'
+    active: act
+    description: to dc41
+    interface-name: GigabitEthernet0/0/0/2
+  - Cisco-IOS-XR-cdp-cfg:cdp:
+      enable:
+      - null
+    Cisco-IOS-XR-ipv4-io-cfg:ipv4-network:
+      addresses:
+        primary:
+          address: 10.1.40.10
+          netmask: 255.255.255.248
+    Cisco-IOS-XR-ipv6-ma-cfg:ipv6-network:
+      addresses:
+        regular-addresses:
+          regular-address:
+          - address: 2001:1:1:40::10
+            prefix-length: 125
+            zone: '0'
+    active: act
+    description: to dc40
+    interface-name: GigabitEthernet0/0/0/3
+
